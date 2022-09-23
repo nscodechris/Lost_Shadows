@@ -1,24 +1,29 @@
 
 ![img_1.png](img_1.png)
-
 #To play the game: <br />
-**BETA VERSION ONLY FOR WINDOWS** <br />
-First time installation: <br />
 
-_Download the file "LostShadows_install.zip" <br />
-Unzip and run the "Lost_Shadows" Application <br />
+<br />
+ <p style="padding: 12px; border: 2px solid blue;"> <i>
+<b><u>BETA VERSION ONLY FOR WINDOWS</u></b> <br />
+<b>First time installation:</b>> <br />
+&#x2022; Download the file "LostShadows_install.zip" <br />
+&#x2022; Unzip and run the "Lost_Shadows" Application <br />
 Installation begins and starts to download music files for the game <br />
-<br />_
-***When new version release: Download zip again*** > <br />
-***Copy and replace lib folder, to your game folder*** <br />
-***Copy and replace these files, (to your game folder):*** <br />
-* **new_hero_classes.exe** <br />
-* **python3.dll** <br />
-* **python310.dll** <br />
+Happy Gaming!!!
+<br/> </i> </p>
 
-**_PS make a copy of your save files!! DS_**
 
-###Other files and info <br /> 
+ <p style="padding: 12px; border: 3px solid red;"> <b><i>
+When new version release: Download zip again <br />
+Copy and replace lib folder, to your game folder <br />
+Copy and replace these files, (to your game folder): <br />
+&#x2022; new_hero_classes.exe <br /> </i> 
+&#x2022; python3.dll <br />
+&#x2022; python310.dll <br />
+PS make a copy of your save files!! DS
+<br/> </b> </p>
+
+##Other files and info <br /> 
 
 Files like: <br /> 
 * game_tick_tack.py <br />
@@ -38,3 +43,8 @@ They are testing files for main file "new_hero_classes.py"
 Files like: <br /> 
 * setup.py <br /> 
 The setup file to create exe 
+
+
+
+
+
