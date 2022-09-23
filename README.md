@@ -17,14 +17,16 @@ Happy Gaming!!!
 
 
 
- <p style="padding: 12px; border: 3px solid red;"> <b><i>
-When new version release: Download zip again <br />
+<details>
+When new version release: <br />
+<summary> <i>
+Download zip again <br />
 Copy and replace lib folder, to your game folder <br />
 Copy and replace these files, (to your game folder): <br />
 &#x2022; new_hero_classes.exe <br /> </i> 
 &#x2022; python3.dll <br />
 &#x2022; python310.dll <br />
-<br/> </b> </p>
+<br/></summary> </details>>
 
 
 <h2>Other files and info <br /> </h2>
@@ -48,7 +50,9 @@ Files like: <br />
 &#x2022; setup.py <br /> 
 The setup file to create exe 
 
-
+<details>
+<summary>Testing something here</summary>
+hej hej </details>
 </html>
 
 
