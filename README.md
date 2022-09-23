@@ -1,5 +1,5 @@
 
-#How to play the game:
+<h1>How to play the game:</h1>
 
 <br />
 
