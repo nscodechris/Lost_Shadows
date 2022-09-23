@@ -4,7 +4,14 @@ To play the game: <br />
 BETA VERSION ONLY FOR WINDOWS <br />
 Download the file "LostShadows_install.zip" <br />
 Unzip and run the "Lost_Shadows" Application <br />
-When new version release: delete all old files and re-install game <br />
+<br />
+When new version release: Download zip again > <br />
+Copy and replace lib folder, to your game folder <br />
+Copy and replace these files, (to your game folder): <br />
+* new_hero_classes.exe <br />
+* python3.dll <br />
+* python310.dll <br />
+
 PS make a copy of your save files!! DS
 
 
