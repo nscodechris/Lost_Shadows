@@ -2,8 +2,11 @@
 
 To play the game: <br />
 BETA VERSION ONLY FOR WINDOWS <br />
+First time installation: <br />
+
 Download the file "LostShadows_install.zip" <br />
 Unzip and run the "Lost_Shadows" Application <br />
+Installation begins and starts to download music files for the game <br />
 <br />
 When new version release: Download zip again > <br />
 Copy and replace lib folder, to your game folder <br />
