@@ -6,27 +6,29 @@
 
 <img alt="img_1.png" src="img_1.png"/>
 
- <p style="padding: 12px; border: 2px solid blue;"> <i>
+<details>
+<summary>
+<b>First time installation:</b> <br /></summary> <br /> <i> 
 <b><u>BETA VERSION ONLY FOR WINDOWS</u></b> <br />
-<b>First time installation:</b> <br />
 &#x2022; Download the file "LostShadows_install.zip" <br />
 &#x2022; Unzip and run the "Lost_Shadows" Application <br />
 Installation begins and starts to download music files for the game <br />
 Happy Gaming!!!
-<br/> </i> </p>
+<br/> </i> </details>
 
 
 
 <details>
-When new version release: <br />
-<summary> <i>
+<summary>
+<b><u>NEW VERSION RELEASE: </u></b> </summary><br />
+ <i>
 Download zip again <br />
 Copy and replace lib folder, to your game folder <br />
 Copy and replace these files, (to your game folder): <br />
 &#x2022; new_hero_classes.exe <br /> </i> 
 &#x2022; python3.dll <br />
 &#x2022; python310.dll <br />
-<br/></summary> </details>>
+<br/> </details>
 
 
 <h2>Other files and info <br /> </h2>
@@ -50,10 +52,6 @@ Files like: <br />
 &#x2022; setup.py <br /> 
 The setup file to create exe 
 
-<details>
-<summary>Testing something here</summary>
-hej hej </details>
-</html>
 
 
 
