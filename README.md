@@ -1,10 +1,10 @@
 
-![img_1.png](img_1.png)
-<br />
-
 #How to play the game: <br />
 
 <br />
+
+![img_1.png](img_1.png)
+
  <p style="padding: 12px; border: 2px solid blue;"> <i>
 <b><u>BETA VERSION ONLY FOR WINDOWS</u></b> <br />
 <b>First time installation:</b>> <br />
