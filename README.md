@@ -1,4 +1,3 @@
-<html>
 
 
 <h1>How to play the game:</h1>
@@ -6,7 +5,7 @@
 <br />
 
 ![img_1.png](img_1.png)
-
+<html>
  <p style="padding: 12px; border: 2px solid blue;"> <i>
 <b><u>BETA VERSION ONLY FOR WINDOWS</u></b> <br />
 <b>First time installation:</b> <br />
@@ -15,8 +14,9 @@
 Installation begins and starts to download music files for the game <br />
 Happy Gaming!!!
 <br/> </i> </p>
+</html>
 
-
+<html>
  <p style="padding: 12px; border: 3px solid red;"> <b><i>
 When new version release: Download zip again <br />
 Copy and replace lib folder, to your game folder <br />
@@ -25,6 +25,7 @@ Copy and replace these files, (to your game folder): <br />
 &#x2022; python3.dll <br />
 &#x2022; python310.dll <br />
 <br/> </b> </p>
+</html>
 
 ##Other files and info <br /> 
 
@@ -47,7 +48,6 @@ Files like: <br />
 * setup.py <br /> 
 The setup file to create exe 
 
-</html>
 
 
 
