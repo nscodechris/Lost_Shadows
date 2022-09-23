@@ -20,7 +20,6 @@ Copy and replace these files, (to your game folder): <br />
 &#x2022; new_hero_classes.exe <br /> </i> 
 &#x2022; python3.dll <br />
 &#x2022; python310.dll <br />
-PS make a copy of your save files!! DS
 <br/> </b> </p>
 
 ##Other files and info <br /> 
