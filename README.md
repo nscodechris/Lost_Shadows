@@ -1,10 +1,10 @@
 # Lost_Shadows
 
 To play the game: <br />
-BETA VERSION <br />
+BETA VERSION ONLY FOR WINDOWS <br />
 Download the file "LostShadows_install.zip" <br />
 Unzip and run the "Lost_Shadows" Application <br />
-ONLY FOR WINDOWS
+
 
 
 Files like: <br /> 
