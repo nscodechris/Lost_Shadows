@@ -1,3 +1,5 @@
+<html>
+
 
 <h1>How to play the game:</h1>
 
@@ -44,6 +46,8 @@ They are testing files for main file "new_hero_classes.py"
 Files like: <br /> 
 * setup.py <br /> 
 The setup file to create exe 
+
+</html>
 
 
 
