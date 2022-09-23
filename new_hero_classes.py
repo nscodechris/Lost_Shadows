@@ -5630,7 +5630,7 @@ def game_help():
                 print("---------------------------------------------------------")
                 print("In this game you will be in in battles, solving puzzles, entering stores, or sleep at an in")
                 print(" 'if you wish to go to main game window just write, quit, back or main game' ")
-                print("Check out the writing commands")
+                print("Check out the writing commands, write battles! or solving puzzles")
                 print("---------------------------------------------------------")
                 user_input = input("What's on your mind, what do you need help with?")
                 if user_input.lower() == "quit" or user_input == "back" or user_input == "main game":
