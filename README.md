@@ -8,7 +8,7 @@
 
 <details>
 <summary>
-<b>First time installation:</b> <br /></summary> <br /> <i> 
+<b><u>FIRST TIME INSTALLATION: </u></b> </summary><br /> <i> 
 <b><u>BETA VERSION ONLY FOR WINDOWS</u></b> <br />
 &#x2022; Download the file "LostShadows_install.zip" <br />
 &#x2022; Unzip and run the "Lost_Shadows" Application <br />
