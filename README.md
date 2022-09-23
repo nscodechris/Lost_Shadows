@@ -1,23 +1,24 @@
-# Lost_Shadows
 
-To play the game: <br />
-BETA VERSION ONLY FOR WINDOWS <br />
+![img_1.png](img_1.png)
+
+#To play the game: <br />
+**BETA VERSION ONLY FOR WINDOWS** <br />
 First time installation: <br />
 
-Download the file "LostShadows_install.zip" <br />
+_Download the file "LostShadows_install.zip" <br />
 Unzip and run the "Lost_Shadows" Application <br />
 Installation begins and starts to download music files for the game <br />
-<br />
-When new version release: Download zip again > <br />
-Copy and replace lib folder, to your game folder <br />
-Copy and replace these files, (to your game folder): <br />
-* new_hero_classes.exe <br />
-* python3.dll <br />
-* python310.dll <br />
+<br />_
+***When new version release: Download zip again*** > <br />
+***Copy and replace lib folder, to your game folder*** <br />
+***Copy and replace these files, (to your game folder):*** <br />
+* **new_hero_classes.exe** <br />
+* **python3.dll** <br />
+* **python310.dll** <br />
 
-PS make a copy of your save files!! DS
+**_PS make a copy of your save files!! DS_**
 
-
+###Other files and info <br /> 
 
 Files like: <br /> 
 * game_tick_tack.py <br />
