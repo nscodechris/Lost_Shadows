@@ -1,5 +1,5 @@
 
-#How to play the game: <br />
+#How to play the game:
 
 <br />
 
