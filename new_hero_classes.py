@@ -4324,7 +4324,7 @@ class Music:
 
 
     def __init__(self):
-        self.music_main_mp3 = ["intro.mp3"]
+        self.music_main_mp3 = ["intro.mp3", "prologue.mp3"]
         self.music_for_all_mp3 = ["sleep_song.mp3","sleeping_at_in.mp3"]
         self.music_battle_mp3 = ["battle_one.mp3", "battle_win.mp3"]
         # "chapter_1_the_crossing.mp3"
@@ -4339,7 +4339,7 @@ class Music:
                                 "chapter_1_forest", "chapter_1_snow_area", "chapter_1_mountain", "chapter_1_materia_shop"]
 
 
-        self.music_main = ["intro"]
+        self.music_main = ["intro", "prologue"]
         self.music_battle = ["x_battle", "battle_win"]
         self.music_for_all = ["sleep_song", "sleeping_at_in"]
 
@@ -4414,6 +4414,10 @@ class Music:
         elif elena.music_name == self.sound_chapter_1[11]:
             os.chdir(dir_path.chapter_1_path)
             pygame.mixer.music.load(play.music_chapter_1_mp3[11])
+            pygame.mixer.music.play(-1)
+        elif elena.music_name == self.music_main[1]:
+            os.chdir(dir_path.music_main_intro)
+            pygame.mixer.music.load(play.music_main_mp3[1])
             pygame.mixer.music.play(-1)
 
         else:
@@ -5680,6 +5684,7 @@ def game_help():
 
 
 def main_game():
+    play.music_loop(play.music_main[1])
     print('''
 
 
