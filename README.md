@@ -1,6 +1,8 @@
 
 ![img_1.png](img_1.png)
-#To play the game: <br />
+<br />
+
+#How to play the game: <br />
 
 <br />
  <p style="padding: 12px; border: 2px solid blue;"> <i>
