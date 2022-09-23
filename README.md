@@ -4,7 +4,7 @@
 
 <br />
 
-![img_1.png](img_1.png)
+<img alt="img_1.png" src="img_1.png"/>
 
  <p style="padding: 12px; border: 2px solid blue;"> <i>
 <b><u>BETA VERSION ONLY FOR WINDOWS</u></b> <br />
@@ -30,22 +30,22 @@ Copy and replace these files, (to your game folder): <br />
 <h2>Other files and info <br /> </h2>
 
 Files like: <br /> 
-* game_tick_tack.py <br />
-* hang_man_game.py <br />
+&#x2022; game_tick_tack.py <br />
+&#x2022; hang_man_game.py <br />
 They will be included in the game later, side games.
 
 <br />
 
 Files like: <br /> 
-* make_excel_files.py <br /> 
-* test_request.py <br /> 
-* music_soup_test.py <br /> 
+&#x2022; make_excel_files.py <br /> 
+&#x2022; test_request.py <br /> 
+&#x2022; music_soup_test.py <br /> 
 They are testing files for main file "new_hero_classes.py"
 
 <br />
 
 Files like: <br /> 
-* setup.py <br /> 
+&#x2022; setup.py <br /> 
 The setup file to create exe 
 
 
