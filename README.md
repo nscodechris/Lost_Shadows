@@ -4,6 +4,8 @@ To play the game: <br />
 BETA VERSION ONLY FOR WINDOWS <br />
 Download the file "LostShadows_install.zip" <br />
 Unzip and run the "Lost_Shadows" Application <br />
+When new version release: delete all old files and re-install game <br />
+PS make a copy of your save files!! DS
 
 
 
