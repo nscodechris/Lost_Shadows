@@ -1,0 +1,13 @@
+
+Run CMD
+wcd = C:\Users\chris\output\new_hero_classes\-New_LostShadows
+in wcd run: python setup.py bdist_msi  (for mac run bdist_dmg (works only in a mac enviroment))
+
+build folder creates > exe.win-amd64-3.10 (folder inside build)
+
+COPY content from exe.win-amd64-3.10  >  C:\Users\chris\Game_Installer
+
+ZIP all conent in \Game_Installer
+
+Rename ZIP to = "LostShadows_install
+
