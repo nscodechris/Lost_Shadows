@@ -2,6 +2,7 @@
 
 To play the game:
 Download the file "LostShadows_install.zip" <br />
-Unzip and run the "Lost_Shadows" Application
+Unzip and run the "Lost_Shadows" Application <br />
+ONLY FOR WINDOWS
 
 
