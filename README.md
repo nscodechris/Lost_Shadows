@@ -7,7 +7,7 @@
 
  <p style="padding: 12px; border: 2px solid blue;"> <i>
 <b><u>BETA VERSION ONLY FOR WINDOWS</u></b> <br />
-<b>First time installation:</b>> <br />
+<b>First time installation:</b> <br />
 &#x2022; Download the file "LostShadows_install.zip" <br />
 &#x2022; Unzip and run the "Lost_Shadows" Application <br />
 Installation begins and starts to download music files for the game <br />
