@@ -13,6 +13,7 @@
 &#x2022; Download the file "LostShadows_install.zip" <br />
 &#x2022; Unzip and run the "Lost_Shadows" Application <br />
 Installation begins and starts to download music files for the game <br />
+<br />
 Mountains in north and snow in the south, the story is not finished <br />
 Even the forest isn't finished, more to come! But you can explore those areas <br />
 But the town has a lot to give <br />
