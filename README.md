@@ -12,6 +12,7 @@
 <b><u>BETA VERSION ONLY FOR WINDOWS</u></b> <br />
 &#x2022; Download the file "LostShadows_install.zip" <br />
 &#x2022; Unzip and run the "Lost_Shadows" Application <br />
+<br />
 Installation begins and starts to download music files for the game <br />
 <br />
 Mountains in north and snow in the south, the story is not finished <br />
