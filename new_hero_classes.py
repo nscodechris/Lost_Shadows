@@ -6363,9 +6363,7 @@ def story1_basement():
                             print(
                                 "You manage to get up from the ground and escape and return\n")
                             print(" to the entrence of the cave\n")
-
                             print("---------------------------------------------------------")
-
                             story1_basement()
                         elif escape_chance <= 2:
                             print("You desperate try to get back on your feet, but fails,"
@@ -6391,9 +6389,6 @@ def story1_basement():
                     else:
                         print("Please choose a valid answer, yes, or no.")
                         print("---------------------------------------------------------")
-
-
-
 
                 elif second.lower() == "exit()":
                     cloud.x_exit_game()
@@ -6432,7 +6427,6 @@ def story1_mountains_in_north():
                 stone_or_branch = input("What will it be??")
                 if "small stone" in stone_or_branch.lower() or "right" in stone_or_branch.lower():
                     drop_qty = random.randint(1, 2)
-
                     print(f"When you grab on to the small stone with your tired hand you feel that its loos\n"
                           f"making you slip a little bit and you drop some items: ")
                     print("---------------------------------------------------------")
@@ -6443,40 +6437,83 @@ def story1_mountains_in_north():
                           "to climb the mountains")
                     print("---------------------------------------------------------")
                     vertical = 3
-                    while vertical == 3:
-                        print(
-                            "Finaly you reach what looks like an entrance to a cave, there are two lit torches burning\n"
-                            "outside of the entrance, they are carved in the rock, one of them seems to recently been placed")
-                        print("You can see a little bit into the cave, the rest is pitch black")
-                        print("---------------------------------------------------------")
-                        cave_choice = input("Will you walk in to the cave, or what is on your mind?")
-                        if cave_choice.lower() == "walk in to the cave" or cave_choice.lower() == "walk inside":
-                            print(
-                                "As you start walking inside the cave, the darkness swallows you and they are coming...")
-                            YourHero.x_battle(cloud, 0, cloud, elena, "no")
-                            print("....\nafter the battle you decide to go back to the entrance")
-                            print("---------------------------------------------------------")
-                            # story1_first_crossing()
-                        elif cave_choice.lower() == "inventory":
-                            YourHero.x_inventory(elena)
-                            YourHero.x_inventory(cloud)
-                            print("---------------------------------------------------------")
-
+                    break
                 elif "branch" in stone_or_branch.lower():
+                    print("As you grab onto the branch, you feel that it is loose, and the same time it lowers\n"
+                          "a door in the mountain opens in front of you....\n"
+                          "You swing yourself inside and landing on a gravel walk, the slippery small stones\n"
+                          "makes you slide down through a hole.")
+                    print("---------------------------------------------------------")
+                    input("Press Enter")
                     vertical = 4
-                    while vertical == 4:
-                        print("As you grab onto the branch, you feel that it is loose, and the same time it lowers\n"
-                              "a door in the mountain opens in front of you....\n"
-                              "You swing yourself inside and landing on a gravel walk, the slippery small stones\n"
-                              "makes you slide down through a hole.")
-                        print("---------------------------------------------------------")
-                        input("Press enter")
-                        print("Waking up from the fall you see a torch hanging from the ceiling")
-                        print("It lights up the 'room' you are in, on the ground there is a skeleton of a unknown origin")
-                        print("Two doors in hardwood is in front of you, one with a helmet on and another with a tree")
-                        print("On the wall there is a iron rod fastened with brown rope, with a smell of tar")
-                        inside_cave_choice = input("What will you do?")
+                    break
+            while vertical == 3:
+                print(
+                    "Finaly you reach what looks like an entrance to a cave, there are two lit torches burning\n"
+                    "outside of the entrance, they are carved in the rock, one of them seems to recently been placed")
+                print("You can see a little bit into the cave, the rest is pitch black")
+                print("---------------------------------------------------------")
+                cave_choice = input("Will you walk in to the cave, or what is on your mind?")
+                if cave_choice.lower() == "walk in to the cave" or cave_choice.lower() == "walk inside":
+                    print(
+                        "As you start walking inside the cave, the darkness swallows you and they are coming...")
+                    YourHero.x_battle(cloud, 0, cloud, elena, "no")
+                    print("....\nafter the battle you decide to go back to the entrance")
+                    print("---------------------------------------------------------")
+                    # story1_first_crossing()
+                elif cave_choice.lower() == "save":
+                    print("Sorry you can't save here, use inventory if you need potions")
+                    print("---------------------------------------------------------")
+                elif cave_choice.lower() == "inventory":
+                    YourHero.x_inventory(elena)
+                    YourHero.x_inventory(cloud)
+                    print("---------------------------------------------------------")
 
+            # you will end up here after vertical 3 falling to this place....
+            while vertical == 4:
+                print("Waking up from the fall you see a torch hanging from the ceiling")
+                print("It lights up the 'room' you are in, on the ground there is a skeleton of a unknown origin")
+                print(
+                    "Two doors in hardwood is in front of you, one with a coat of arms of a lion and another with a tree")
+                print("On the wall there is a iron rod fastened with brown rope, with a smell of tar")
+                print("---------------------------------------------------------")
+                inside_cave_choice = input("What will you do?")
+                if inside_cave_choice.lower() == "look at skeleton":
+                    print("You bow down to the skeleton, from what you can tell the head looks like a human head")
+                    print("But the body looks like it belonged to a horse")
+                    print("Could it really have been a centaur?? You ask your self")
+                    print(
+                        "One thing that you notice is a shiny thing that is stuck deep in the chest part of the skeleton")
+                    print("---------------------------------------------------------")
+                elif "shiny" in inside_cave_choice.lower():
+                    print("As you look closer at the shiny thing, you see that it is a key")
+                    print("You recived the key of the tree")
+                    cloud.key_item_1 = 1
+                    cloud.key_item_1_name = "Key of the tree's"
+                    print("---------------------------------------------------------")
+
+                elif "key of the tree" in inside_cave_choice.lower() and cloud.key_item_1 == 1:
+                    print("You use the key of the trees on the door with a coat of arms with a tree")
+                    print("The doors slowly opens")
+                    vertical = 5
+                    break
+
+                elif inside_cave_choice.lower() == "save":
+                    print("Sorry you can't save here, use inventory if you need potions")
+                    print("---------------------------------------------------------")
+
+                elif inside_cave_choice.lower() == "inventory":
+                    YourHero.x_inventory(elena)
+                    YourHero.x_inventory(cloud)
+                    print("---------------------------------------------------------")
+
+                else:
+                    print("Dont know what you want!?")
+
+            while vertical == 5:
+                print("Slowly you walk into the door, and it closses behind you, no way you can return to that room again")
+                cloud.key_item_1 = 0
+                cloud.key_item_1_name = ""
 
             while vertical == 10:
                 print("You choose the right way....")
