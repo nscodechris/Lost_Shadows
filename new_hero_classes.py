@@ -594,7 +594,7 @@ class YourHero:
                 self.inventory["Item"].insert(var + 1, give_item["Item"][int(give_res)])
                 self.inventory["QTY"].insert(var + 1, give_item["QTY"][int(give_res)])
 
-    # If mugged or falling from cliff loosing items any_way:
+    # If mugged or falling from cliff loosing items in some way:
     def x_random_mugging(self):
         mugg = random.randint(0, 10)
         if mugg >= 5:
@@ -4331,12 +4331,14 @@ class Music:
         self.music_chapter_1_mp3 = ["chapter_1_the_crossing.mp3", "chapter_1_town_abreheim.mp3", "chapter_1_item_shop.mp3",
                                 "chapter_1_abrehiem_ally.mp3", "chapter_1_round_room.mp3", "chapter_1_abreheim_inn.mp3",
                                 "chapter_1_weapon_shop.mp3", "chapter_1_abrehiem_ally_dark.mp3",
-                                "chapter_1_forest.mp3", "chapter_1_snow_area.mp3", "chapter_1_mountain.mp3", "chapter_1_materia_shop.mp3"]
+                                "chapter_1_forest.mp3", "chapter_1_snow_area.mp3", "chapter_1_mountain.mp3",
+                                    "chapter_1_materia_shop.mp3", "chapter_1_basement.mp3"]
 
         self.sound_chapter_1 = ["chapter_1_the_crossing", "chapter_1_town_abreheim", "chapter_1_item_shop",
                                 "chapter_1_abrehiem_ally", "chapter_1_round_room", "chapter_1_abreheim_inn",
                                 "chapter_1_weapon_shop", "chapter_1_abrehiem_ally_dark",
-                                "chapter_1_forest", "chapter_1_snow_area", "chapter_1_mountain", "chapter_1_materia_shop"]
+                                "chapter_1_forest", "chapter_1_snow_area", "chapter_1_mountain",
+                                "chapter_1_materia_shop", "chapter_1_basement"]
 
 
         self.music_main = ["intro", "prologue"]
@@ -4350,7 +4352,10 @@ class Music:
             os.chdir(dir_path.music_main_intro)
             pygame.mixer.music.load(play.music_main_mp3[0])
             pygame.mixer.music.play(-1)
-            # music main 1 the self.music_main 1 need to change mp3 file
+        elif elena.music_name == self.music_main[1]:
+            os.chdir(dir_path.music_main_intro)
+            pygame.mixer.music.load(play.music_main_mp3[1])
+            pygame.mixer.music.play(-1)
         elif elena.music_name == self.music_for_all[1]:
             os.chdir(dir_path.battle_path)
             pygame.mixer.music.load(play.music_for_all[1])
@@ -4415,10 +4420,11 @@ class Music:
             os.chdir(dir_path.chapter_1_path)
             pygame.mixer.music.load(play.music_chapter_1_mp3[11])
             pygame.mixer.music.play(-1)
-        elif elena.music_name == self.music_main[1]:
-            os.chdir(dir_path.music_main_intro)
-            pygame.mixer.music.load(play.music_main_mp3[1])
+        elif elena.music_name == self.sound_chapter_1[12]:
+            os.chdir(dir_path.chapter_1_path)
+            pygame.mixer.music.load(play.music_chapter_1_mp3[12])
             pygame.mixer.music.play(-1)
+
 
         else:
             print("end of music")
@@ -4993,7 +4999,237 @@ class MusicDownload:
                 MusicDownload.download_file_from_google_drive(self, file_id, destination)
                 print(f"The music {song_name} has been downloaded")
 
+class TickTack:
+    def __init__(self, board):
+        self.board = board
+        self.win = 0
 
+    def print_board(self, board):
+        row1 = "|{}|{}|{}|".format(board[0], board[1], board[2])
+        row2 = "|{}|{}|{}|".format(board[3], board[4], board[5])
+        row3 = "|{}|{}|{}|".format(board[6], board[7], board[8])
+        print()
+        print(row1)
+        print(row2)
+        print(row3)
+        print()
+
+
+    def player_move(self, icon, board):
+        if icon == "X":
+            number = 1
+            print(f"Your turn player {icon}")
+            choice = int(input("Enter your move (1-9)").strip())
+            if board[choice - 1] == " ":
+                board[choice - 1] = icon
+            else:
+                print("That space is taken!")
+                TickTack.player_move(self, icon, self.board)
+        elif icon == "O":
+            number = 2
+            print(f"Your turn player {icon}")
+            if board[0] == icon and board[1] == icon or board[0] == "X" and board[1] == "X":
+                choice = 3
+                TickTack.if_taken(self, choice, self.board)
+            elif board[1] == icon and board[2] == icon or board[1] == "X" and board[2] == "X":
+                choice = 1
+                TickTack.if_taken(self, choice, self.board)
+            elif board[0] == icon and board[2] == icon or board[0] == "X" and board[2] == "X":
+                choice = 4
+                TickTack.if_taken(self, choice, self.board)
+            elif board[3] == icon and board[4] == icon or board[3] == "X" and board[4] == "X":
+                choice = 6
+                TickTack.if_taken(self, choice, self.board)
+            elif board[3] == icon and board[5] == icon or board[3] == "X" and board[5] == "X":
+                choice = 5
+                TickTack.if_taken(self, choice, self.board)
+            elif board[4] == icon and board[5] == icon or board[4] == "X" and board[5] == "X":
+                choice = 4
+                TickTack.if_taken(self, choice, self.board)
+            elif board[6] == icon and board[7] == icon or board[6] == "X" and board[7] == "X":
+                choice = 9
+                TickTack.if_taken(self, choice, self.board)
+            elif board[6] == icon and board[8] == icon or board[6] == "X" and board[8] == "X":
+                choice = 8
+                TickTack.if_taken(self, choice, self.board)
+            elif board[7] == icon and board[8] == icon or board[7] == "X" and board[8] == "X":
+                choice = 7
+                TickTack.if_taken(self, choice, self.board)
+            elif board[0] == icon and board[3] == icon or board[0] == "X" and board[3] == "X":
+                choice = 7
+                TickTack.if_taken(self, choice, self.board)
+            elif board[0] == icon and board[6] == icon or board[0] == "X" and board[6] == "X":
+                choice = 4
+                TickTack.if_taken(self, choice, self.board)
+            elif board[3] == icon and board[6] == icon or board[4] == "X" and board[6] == "X":
+                choice = 1
+                TickTack.if_taken(self, choice, self.board)
+            elif board[0] == icon and board[3] == icon or board[0] == "X" and board[3] == "X":
+                choice = 7
+                TickTack.if_taken(self, choice, self.board)
+            elif board[1] == icon and board[4] == icon or board[1] == "X" and board[4] == "X":
+                choice = 8
+                TickTack.if_taken(self, choice, self.board)
+            elif board[1] == icon and board[7] == icon or board[1] == "X" and board[7] == "X":
+                choice = 5
+                TickTack.if_taken(self, choice, self.board)
+            elif board[4] == icon and board[7] == icon or board[4] == "X" and board[7] == "X":
+                choice = 2
+                TickTack.if_taken(self, choice, self.board)
+            elif board[2] == icon and board[5] == icon or board[2] == "X" and board[5] == "X":
+                choice = 9
+                TickTack.if_taken(self, choice, self.board)
+            elif board[2] == icon and board[8] == icon or board[2] == "X" and board[8] == "X":
+                choice = 6
+                TickTack.if_taken(self, choice, self.board)
+            elif board[5] == icon and board[8] == icon or board[5] == "X" and board[8] == "X":
+                choice = 3
+                TickTack.if_taken(self, choice, self.board)
+            elif board[0] == icon and board[4] == icon or board[0] == "X" and board[4] == "X":
+                choice = 9
+                TickTack.if_taken(self, choice, self.board)
+            elif board[0] == icon and board[8] == icon or board[0] == "X" and board[8] == "X":
+                choice = 5
+                TickTack.if_taken(self, choice, self.board)
+            elif board[4] == icon and board[8] == icon or board[4] == "X" and board[8] == "X":
+                choice = 1
+                TickTack.if_taken(self, choice, self.board)
+            elif board[2] == icon and board[6] == icon or board[2] == "X" and board[6] == "X":
+                choice = 5
+                TickTack.if_taken(self, choice, self.board)
+            elif board[2] == icon and board[4] == icon or board[2] == "X" and board[4] == "X":
+                choice = 7
+                TickTack.if_taken(self, choice, self.board)
+            elif board[4] == icon and board[6] == icon or board[4] == "X" and board[6] == "X":
+                choice = 3
+                TickTack.if_taken(self, choice, self.board)
+            elif board[4] == " ":
+                choice = 5
+            else:
+                choice = random.randint(1, 9)
+                TickTack.if_taken(self, choice, self.board)
+            if board[choice - 1] == " ":
+                board[choice - 1] = icon
+            else:
+                print("That space is taken!")
+                board[TickTack.if_taken(self, choice, self.board) - 1] = icon
+                # if_taken(choice)
+                # player_move(icon)
+
+
+    def if_taken(self, choice, board):
+        if board[choice - 1] == "X" or board[choice - 1] == "O":
+            empty_space = []
+            for i in range(1, 10):
+                if board[i - 1] == " ":
+                    empty_space.append(i)
+            try:
+                choice = random.choice(empty_space)
+            except:
+                print()
+        return choice
+
+
+
+    def clear_board(self, player_win_count, computer_win_count, turn, player_name, board):
+        score_board = {}
+        print(f"Player points = {player_win_count}\nComputer points = {computer_win_count}")
+        if player_win_count >= 3:
+            self.win = 1
+            print(f"Congratulations {player_name}, you won!!")
+            score_board[player_name] = player_win_count
+            score_board["Computer"] = computer_win_count
+            with open('score_board.txt', 'a') as file:
+                file.write(str(score_board))
+
+        elif computer_win_count >= 3:
+            self.win = 0
+            print(f"Sorry {player_name}, you loose, the Computer wins!!")
+            score_board[player_name] = player_win_count
+            score_board["Computer"] = computer_win_count
+            with open('score_board.txt', 'a') as file:
+                file.write(str(score_board))
+
+        else:
+            input(f"Press enter for round {turn}!!")
+            print("-"*25)
+            for x in range(1, 10):
+                if board[x - 1] != " ":
+                    board[x - 1] = " "
+
+
+    def is_victory(self, icon, board):
+        if (board[0] == icon and board[1] == icon and board[2] == icon) or \
+            (board[3] == icon and board[4] == icon and board[5] == icon) or \
+            (board[6] == icon and board[7] == icon and board[8] == icon) or \
+            (board[0] == icon and board[3] == icon and board[6] == icon) or \
+            (board[1] == icon and board[4] == icon and board[7] == icon) or \
+            (board[2] == icon and board[5] == icon and board[8] == icon) or \
+            (board[0] == icon and board[4] == icon and board[8] == icon) or \
+            (board[2] == icon and board[4] == icon and board[6] == icon):
+            return True
+        else:
+            return False
+
+    def is_draw(self, board):
+        if " " not in board:
+            return True
+        else:
+            return False
+
+
+    def start_game(self):
+        turn = 1
+        player_win_count = 0
+        computer_win_count = 0
+        player_name = input("What is your name").lower()
+        who_starts = input("Who start?").lower()
+        TickTack.clear_board(self, player_win_count, computer_win_count, turn, player_name, self.board)
+        if "i" in who_starts:
+            print("Ok, you will start")
+            player_start = "X"
+            second_player = "O"
+        else:
+            print("Ok, I will start")
+            player_start = "O"
+            second_player = "X"
+        while player_win_count < 3 and computer_win_count < 3:
+            if player_win_count < 3 and computer_win_count < 3:
+                TickTack.print_board(self, self.board)
+                TickTack.player_move(self, player_start, self.board)
+                TickTack.print_board(self, self.board)
+                if TickTack.is_victory(self, player_start, self.board):
+                    if player_start == "X":
+                        player_win_count += 1
+                    else:
+                        computer_win_count += 1
+                    turn += 1
+                    print(f"{player_start} Wins! Congratulations!")
+                    TickTack.clear_board(self, player_win_count, computer_win_count, turn, player_name, self.board)
+                elif TickTack.is_draw(self, self.board):
+                    print("Its a draw!")
+                    turn += 1
+                    TickTack.clear_board(self, player_win_count, computer_win_count, turn, player_name, self.board)
+                TickTack.player_move(self, second_player, self.board)
+                TickTack.print_board(self, self.board)
+                if TickTack.is_victory(self, second_player, self.board):
+                    if second_player == "X":
+                        player_win_count += 1
+                    else:
+                        computer_win_count += 1
+                    turn += 1
+                    print(f"{second_player} Wins! Congratulations!")
+                    TickTack.clear_board(self, player_win_count, computer_win_count, turn, player_name, self.board)
+                elif TickTack.is_draw(self, self.board):
+                    turn += 1
+                    print("Its a draw!")
+                    TickTack.clear_board(self, player_win_count, computer_win_count, turn, player_name, self.board)
+            elif player_win_count > 3:
+                break
+            elif computer_win_count > 3:
+                break
+
+game_tick_tack = TickTack([" " for i in range(9)])
 main_folder = MusicDownload("https://drive.google.com/drive/folders/15TyBVDzYyffK0SOBLBCFKgtjeaDiFq1Y")
 make_excel_files = MakeExcelFiles()
 important = GetImportant()
@@ -6046,6 +6282,7 @@ def story1_round_room():
 
 def story1_basement():
     while True:
+        play.music_loop(play.sound_chapter_1[12])
         room = 2
         # second = ""
         while room == 2:
@@ -6054,27 +6291,109 @@ def story1_basement():
                 print("The darkness have never been darken then down here, where is here???")
                 second = input("\nAfter the hatch closed behind you, you feel that you are not alone,"
                                "\nsomeone or something is down there with you\n"
-                               "What will you do?")
+                               "Infront of you you see two tunnels one to the right and one to the left\n"
+                                "What will you do?")
+                print("---------------------------------------------------------")
                 if second.lower() == "shout at the person you heard" or second.lower() == "hello" \
                         or second.lower() == "somebody there":
-                    print("More coming up!!!")  # Here you will find the iron gloves world key item
-                    cloud.x_add_items_inventory({"Item": ["Key world item 2"], "QTY": ["Iron Gloves"]})
+                    print("As you shout out in the dark, you hear a noice coming from the left tunnel!!!")
+                    print("---------------------------------------------------------")
 
-                    print("You receive the", cloud.x_see_inventory_name_qty("item", "Key world item 2"))
-                    cloud.key_item_1 = 0
-                    cloud.key_item_2 = 0
-                    cloud.key_item_3 = 0
-                    cloud.key_item_4 = 0
-                    cloud.key_item_1_name = ""
-                    cloud.key_item_2_name = ""
-                    cloud.key_item_3_name = ""
-                    cloud.key_item_4_name = ""
-                    elena.help = 0
-                    cloud.chapter_1_round_room_count += 1
-                    cloud.key_world_item_2 = 1
-                    elena.progress = story.story_name_loop(story.chapter_names[0], story.chap_1_names[4])
-                    ask_save()
-                    elena.x_story_chapter_count()
+                elif second.lower() == "left" or second.lower() == "walk to the left":
+                    print("The walls in the tunnel are brown-red with spots coverd in green slime")
+                    print("The air is surprisingly fresh, and a  bit cold")
+                    print("As you go further in to the tunnel you hear the noice from something or someone better")
+                    print("As further you go, you see a light hanging above a door")
+                    print("Without a doubt you open the door....")
+                    print("There in front of you is two chairs, there is a young lady sitting in one of them")
+                    input("Press enter")
+                    lady_in_chair = f"Hello {cloud.name} and {elena.name}, I have been waiting for you...\n"
+                    for char in lady_in_chair:
+                        sys.stdout.write(char)
+                        sys.stdout.flush()
+                        time.sleep(time_writing)
+                    lady_in_chair_2 = f"I have something you want, but you need to earn it"
+                    for char in lady_in_chair_2:
+                        sys.stdout.write(char)
+                        sys.stdout.flush()
+                        time.sleep(time_writing)
+                    game_question = input("\nDo you want to play a game?")
+                    if game_question.lower() == "yes":
+                        print("Wise choice, lets start....")
+                        game_tick_tack.start_game()
+                        if game_tick_tack.win >= 1:
+                            game_tick_tack.win = 0
+                            print("You are good\n")
+                            print("You will have the one thing you need! Bye Bye")
+                            print("The mist takes over the room, blinding your eyes....and you return to the ally")
+                            cloud.x_add_items_inventory({"Item": ["Key world item 2"], "QTY": ["Iron Gloves"]})
+                            print("You receive the", cloud.x_see_inventory_name_qty("item", "Key world item 2"))
+                            cloud.key_item_1 = 0
+                            cloud.key_item_2 = 0
+                            cloud.key_item_3 = 0
+                            cloud.key_item_4 = 0
+                            cloud.key_item_1_name = ""
+                            cloud.key_item_2_name = ""
+                            cloud.key_item_3_name = ""
+                            cloud.key_item_4_name = ""
+                            elena.help = 0
+                            cloud.chapter_1_round_room_count += 1
+                            cloud.key_world_item_2 = 1
+                            elena.progress = story.story_name_loop(story.chapter_names[0], story.chap_1_names[4])
+                            ask_save()
+                            elena.x_story_chapter_count()
+                        elif game_tick_tack.win == 0:
+                            print("No good, i will punish you, they will come")
+                            print("But return to me if you wish to play again....")
+                            YourHero.x_battle(cloud, 0, cloud, elena, "no")
+                            print("---------------------------------------------------------")
+
+                elif second.lower() == "right" or second.lower() == "walk to the right":
+                    print("---------------------------------------------------------")
+                    print("As you start walking in to the right tunnel you suddenly slip and lands on your back\n")
+                    print("Something is coming for you...!!")
+                    print("---------------------------------------------------------")
+                    time.sleep(time_short_wait)
+                    escape_choice = input("Do you want to try to escape before they are coming??\n")
+                    print("---------------------------------------------------------")
+                    if escape_choice == "yes" or escape_choice == "Yes":
+                        escape_chance = random.randint(0, 5)
+                        if escape_chance >= 3:
+                            print(
+                                "You manage to get up from the ground and escape and return\n")
+                            print(" to the entrence of the cave\n")
+
+                            print("---------------------------------------------------------")
+
+                            story1_basement()
+                        elif escape_chance <= 2:
+                            print("You desperate try to get back on your feet, but fails,"
+                                  " you see the shadows on the wall, they are coming!!!")
+                            print("---------------------------------------------------------")
+                            YourHero.x_battle(cloud, 0, cloud, elena, "no")
+                            print("As you win the battle, they have left a chest for you\n")
+                            open_chest = input("Do you want to open the chest yes/no?")
+                            print("---------------------------------------------------------")
+                            if open_chest.lower() == "yes":
+                                money_give = random.randint(10, 150)
+                                print(f"You recive {money_give} gil each")
+                                print("And walk back to the cave entrance")
+                                print("---------------------------------------------------------")
+                                cloud.x_add_items_inventory({"Item": ["gil"], "QTY": [money_give]})
+                                elena.x_add_items_inventory({"Item": ["gil"], "QTY": [money_give]})
+                            elif open_chest.lower() == "no":
+                                print("You walk back to the cave entrance, leaving the chest alone")
+                                print("---------------------------------------------------------")
+                            else:
+                                print("You walk back to the cave entrance, leaving the chest alone")
+                                print("---------------------------------------------------------")
+                    else:
+                        print("Please choose a valid answer, yes, or no.")
+                        print("---------------------------------------------------------")
+
+
+
+
                 elif second.lower() == "exit()":
                     cloud.x_exit_game()
                 else:
@@ -6171,6 +6490,7 @@ def story1_forest_in_east():
                 break
 
 
+
 def story1_snow_in_south():
     elena.progress = story.story_name_loop(story.chapter_names[0], story.chap_1_names[8])
     play.music_loop(play.sound_chapter_1[9])
@@ -6206,6 +6526,10 @@ def story1_snow_in_south():
                 else:
                     print("Please choose a valid answer, yes, or no.")
                     print("---------------------------------------------------------")
+            elif escape == 2:
+                print("You manage to get up from the snow, and crawl your way back before they come")
+                print("---------------------------------------------------------")
+                story1_first_crossing()
 
 
 def story1_abrehiem_town():
@@ -6738,12 +7062,12 @@ def story1_ally_in_abreheim(ally_count):
                                         in cloud.x_see_inventory_name_qty("item", "Key world item 2") \
                                         and cloud.chapter_1_ally_woman_wall_away == 0:
                                     print("After finding the",
-                                          cloud.x_see_inventory_name_qty("item", "key world item 2"),
+                                          cloud.x_see_inventory_name_qty("item", "Key world item 2"),
                                           "you decide to walk over to the woman again")
                                     print("Her eyes are shining her smile is big, she feels happy,"
                                           " that she could help you")
                                     print("'Very well, you found the",
-                                          cloud.x_see_inventory_name_qty("item", "key world item 2"),
+                                          cloud.x_see_inventory_name_qty("item", "Key world item 2"),
                                           "now you can climb")
                                     print("She turns away, and walk away into the mist")
                                     cloud.chapter_1_ally_woman_wall_away = 1
@@ -7120,12 +7444,7 @@ def story1_first_crossing():
                     print("---------------------------------------------------------")
                     print(elena.total_stat)
                     input("Press enter to continue\n")
-                elif walk.lower() == "hang man":
-                    hang_man_game.start_hang_man()
-                    if hang_man_game.user.win > 1:
-                        print("You are good")
-                    elif hang_man_game.user.win == 0:
-                        print("No good")
+
                 else:
                     print("Choose a valid option")
                     print("---------------------------------------------------------")
