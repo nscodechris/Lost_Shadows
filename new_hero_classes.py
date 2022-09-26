@@ -5929,6 +5929,8 @@ def main_game():
     print("---------------------------------------------------------")
     tprint("lost  shadows")
     print("---------------------------------------------------------")
+    print("Made By codechris, 2022, version 1.0")
+
     dots = ":     "
     name_dot = "Welcome to Lost Shadows" + dots
 
