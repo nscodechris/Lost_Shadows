@@ -1,0 +1,29 @@
+
+Adding items to the inventory
+cloud.x_add_items_inventory({"Item": ["potion"], "QTY": [1]})
+def x_add_items_inventory(self, give_item):
+
+If mugged or falling from cliff loosing items any_way:
+def x_random_mugging(self):
+used with x_remove_items_inventory(cloud,cloud.x_random_mugging(), yes, cloud, yes)
+
+Removing items from inventory
+def x_remove_items_inventory(self, give_item, thief, hero, loose):
+cloud.x_remove_items_inventory({"Item": ["gil"], "QTY": [take_money]}, "no", cloud, "yes")
+
+function for see weapon name, if you have ring equipped and what protection
+also for see qty of an item, show == "item" "weapon", "ring", item_select == 0 if other then item
+else name of the item to check for
+def x_see_inventory_name_qty(self, show, item_select):
+
+elena.progress = story.story_name_loop(story.chapter_names[0], story.chap_1_names[4])
+
+###
+STORY
+
+In forest after 5 rewards.... opportunity to save, place will be == deep forest:
+
+
+NEW VERSION 1.1
+TICK TACK added to main game
+north story finished
