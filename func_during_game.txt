@@ -18,6 +18,21 @@ def x_see_inventory_name_qty(self, show, item_select):
 
 elena.progress = story.story_name_loop(story.chapter_names[0], story.chap_1_names[4])
 
+
+
+# Key items to use in special locations, (those are not world key items)
+Remeber to zero them out when they are used.
+
+cloud.key_item_1 = 0
+cloud.key_item_2 = 0
+                        cloud.key_item_3 = 0
+                        cloud.key_item_4 = 0
+                        cloud.key_item_1_name = ""
+                        cloud.key_item_2_name = ""
+                        cloud.key_item_3_name = ""
+                        cloud.key_item_4_name = ""
+                        elena.help = 0
+
 ###
 STORY
 
