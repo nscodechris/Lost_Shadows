@@ -5,6 +5,7 @@ from os import system, name
 class TickTack:
     def __init__(self, board):
         self.board = board
+        self.win = 0
 
     def print_board(self, board):
         row1 = "|{}|{}|{}|".format(board[0], board[1], board[2])
@@ -134,19 +135,21 @@ class TickTack:
         score_board = {}
         print(f"Player points = {player_win_count}\nComputer points = {computer_win_count}")
         if player_win_count >= 3:
+            self.win = 1
             print(f"Congratulations {player_name}, you won!!")
             score_board[player_name] = player_win_count
             score_board["Computer"] = computer_win_count
             with open('score_board.txt', 'a') as file:
                 file.write(str(score_board))
-            exit()
+            # exit()
         elif computer_win_count >= 3:
+            self.win = 0
             print(f"Sorry {player_name}, you loose, the Computer wins!!")
             score_board[player_name] = player_win_count
             score_board["Computer"] = computer_win_count
             with open('score_board.txt', 'a') as file:
                 file.write(str(score_board))
-            exit()
+            # exit()
         else:
             input(f"Press enter for round {turn}!!")
             print("-"*25)
@@ -190,8 +193,8 @@ class TickTack:
             print("Ok, I will start")
             player_start = "O"
             second_player = "X"
-        while player_win_count < 3 or computer_win_count < 3:
-            if player_win_count < 3 or computer_win_count < 3:
+        while player_win_count < 3 and computer_win_count < 3:
+            if player_win_count < 3 and computer_win_count < 3:
                 TickTack.print_board(self, self.board)
                 TickTack.player_move(self, player_start, self.board)
                 TickTack.print_board(self, self.board)
@@ -221,8 +224,12 @@ class TickTack:
                     turn += 1
                     print("Its a draw!")
                     TickTack.clear_board(self, player_win_count, computer_win_count, turn, player_name, self.board)
-
+            elif player_win_count > 3:
+                break
+            elif computer_win_count > 3:
+                break
 
 # game_tick_tack = TickTack([" " for i in range(9)])
 # game_tick_tack.start_game()
+# print("now")
 
