@@ -2776,6 +2776,7 @@ class YourHero:
             story1_basement()
         elif elena.chapter == story.chapter_names[0] and elena.story_name == story.chap_1_names[8]:
             story1_snow_in_south()
+
         else:
             print("Something got wrong", elena.chapter)
             exit()
@@ -6413,25 +6414,75 @@ def story1_mountains_in_north():
             vertical = 1
             # second = ""
             while vertical == 1:
-                print("---------------------------------------------------------")
                 print("As you hold on to the hard cliffs you see a light coming out from the mountain to the left\n"
                       "To the right you can see the shadows moves in a mysterious way")
+                print("---------------------------------------------------------")
+
                 where_to_climb = input("Where do you want to climb?")
                 if "left" in where_to_climb:
                     vertical = 2
                 elif "right" in where_to_climb:
-                    vertical = 3
-
+                    vertical = 10
             while vertical == 2:
                 print("You choose the left way....")
-                input("Press enter")
-                story1_first_crossing()
+                print("Your hands and legs are shaking, and you start to breath heavily")
+                print("In your next move of climbing higher will you grab the small stone on the right\n"
+                      "or will you grab a branch that is sticking out from the mountain, it looks a little bit old")
+                print("---------------------------------------------------------")
+                stone_or_branch = input("What will it be??")
+                if "small stone" in stone_or_branch.lower() or "right" in stone_or_branch.lower():
+                    drop_qty = random.randint(1, 2)
 
-            while vertical == 3:
+                    print(f"When you grab on to the small stone with your tired hand you feel that its loos\n"
+                          f"making you slip a little bit and you drop some items: ")
+                    print("---------------------------------------------------------")
+                    cloud.x_remove_items_inventory({"Item": ["potion"], "QTY": [drop_qty]}, "no", cloud, "yes")
+                    elena.x_remove_items_inventory({"Item": ["potion"], "QTY": [drop_qty]}, "no", elena, "yes")
+                    print("---------------------------------------------------------")
+                    print("Even if the drop made you sweat even more, you manage to get you grip back and continues\n"
+                          "to climb the mountains")
+                    print("---------------------------------------------------------")
+                    vertical = 3
+                    while vertical == 3:
+                        print(
+                            "Finaly you reach what looks like an entrance to a cave, there are two lit torches burning\n"
+                            "outside of the entrance, they are carved in the rock, one of them seems to recently been placed")
+                        print("You can see a little bit into the cave, the rest is pitch black")
+                        print("---------------------------------------------------------")
+                        cave_choice = input("Will you walk in to the cave, or what is on your mind?")
+                        if cave_choice.lower() == "walk in to the cave" or cave_choice.lower() == "walk inside":
+                            print(
+                                "As you start walking inside the cave, the darkness swallows you and they are coming...")
+                            YourHero.x_battle(cloud, 0, cloud, elena, "no")
+                            print("....\nafter the battle you decide to go back to the entrance")
+                            print("---------------------------------------------------------")
+                            # story1_first_crossing()
+                        elif cave_choice.lower() == "inventory":
+                            YourHero.x_inventory(elena)
+                            YourHero.x_inventory(cloud)
+                            print("---------------------------------------------------------")
+
+                elif "branch" in stone_or_branch.lower():
+                    vertical = 4
+                    while vertical == 4:
+                        print("As you grab onto the branch, you feel that it is loose, and the same time it lowers\n"
+                              "a door in the mountain opens in front of you....\n"
+                              "You swing yourself inside and landing on a gravel walk, the slippery small stones\n"
+                              "makes you slide down through a hole.")
+                        print("---------------------------------------------------------")
+                        input("Press enter")
+                        print("Waking up from the fall you see a torch hanging from the ceiling")
+                        print("It lights up the 'room' you are in, on the ground there is a skeleton of a unknown origin")
+                        print("Two doors in hardwood is in front of you, one with a helmet on and another with a tree")
+                        print("On the wall there is a iron rod fastened with brown rope, with a smell of tar")
+                        inside_cave_choice = input("What will you do?")
+
+
+            while vertical == 10:
                 print("You choose the right way....")
                 input("Press enter")
                 story1_first_crossing()
-                # YourHero.x_battle(cloud, 1, cloud, elena, "yes")
+
     else:
         print("Without the gloves its impossible to climb, you fall down while trying, hopelessly returning back")
         print("---------------------------------------------------------")
@@ -6439,56 +6490,65 @@ def story1_mountains_in_north():
         story1_first_crossing()
 
 
+def story_1_mountains_in_north_inside_cave_maze():
+    tprint("The Lost Maze")
+    # after finding the exit there will be a boss fight
+    # winning the fight grants you the snow boats!!
+    # YourHero.x_battle(cloud, 1, cloud, elena, "yes")
+
 def story1_forest_in_east():
     reward = 0
     while True:
         while reward <= 5:
-            play.music_loop(play.sound_chapter_1[8])
-            print("---------------------------------------------------------")
-            tprint("Forest in east")
-            print("---------------------------------------------------------")
-            print("The forest have many tall trees, reaching all the way to the sky")
-            print("There is a rumor about this forest, have you heard about it?")
-            print("---------------------------------------------------------")
-            rumors_choice = input("Would you like to share a rumor??")
-            print("---------------------------------------------------------")
-            if rumors_choice.lower() == "yes" or rumors_choice.lower() == "YES":
-                rumors_talk = input("What have you heard??")
+            if reward <= 5:
+                play.music_loop(play.sound_chapter_1[8])
                 print("---------------------------------------------------------")
-                if rumors_talk in cloud.x_see_inventory_name_qty("item", "Key world item 3"):
-                    print("You remember correctly, a reward may be in your hands")
+                tprint("Forest in east")
+                print("---------------------------------------------------------")
+                print("The forest have many tall trees, reaching all the way to the sky")
+                print("There is a rumor about this forest, have you heard about it?")
+                print("---------------------------------------------------------")
+                rumors_choice = input("Would you like to share a rumor??")
+                print("---------------------------------------------------------")
+                if rumors_choice.lower() == "yes" or rumors_choice.lower() == "YES":
+                    rumors_talk = input("What have you heard??")
                     print("---------------------------------------------------------")
-                    rumors_reward = random.randint(0, 6)
-                    print("Let the trees decide...")
-                    if rumors_reward >= 3:
-                        reward_money = random.randint(2, 30)
-                        cloud.x_add_items_inventory({"Item": ["gil"], "QTY": [reward_money]})
-                        elena.x_add_items_inventory({"Item": ["gil"], "QTY": [reward_money]})
-                        print("You are lucky, they have decided to give you each", reward_money, "GIL")
-                        reward += 1
-                        input("press enter")
-                    elif rumors_reward <= 2:
-                        take_money = random.randint(1, 5)
-                        cloud.x_remove_items_inventory({"Item": ["gil"], "QTY": [take_money]}, "no", cloud, "yes")
-                        elena.x_remove_items_inventory({"Item": ["gil"], "QTY": [take_money]}, "no", elena, "yes")
-                        print("Bad luck, the forest will take", take_money, "Gil, from each of you")
-                        input("press enter")
-                        reward += 1
+                    if rumors_talk in cloud.x_see_inventory_name_qty("item", "Key world item 3"):
+                        print("You remember correctly, a reward may be in your hands")
+                        print("---------------------------------------------------------")
+                        rumors_reward = random.randint(0, 6)
+                        print("Let the trees decide...")
+                        if rumors_reward >= 3:
+                            reward_money = random.randint(2, 30)
+                            cloud.x_add_items_inventory({"Item": ["gil"], "QTY": [reward_money]})
+                            elena.x_add_items_inventory({"Item": ["gil"], "QTY": [reward_money]})
+                            print("You are lucky, they have decided to give you each", reward_money, "GIL")
+                            reward += 1
+                            input("press enter")
+                        elif rumors_reward <= 2:
+                            take_money = random.randint(1, 5)
+                            cloud.x_remove_items_inventory({"Item": ["gil"], "QTY": [take_money]}, "no", cloud, "yes")
+                            elena.x_remove_items_inventory({"Item": ["gil"], "QTY": [take_money]}, "no", elena, "yes")
+                            print("Bad luck, the forest will take", take_money, "Gil, from each of you")
+                            input("press enter")
+                            reward += 1
+                    else:
+                        print("That is not what i have heard, come back later")
+                        print("---------------------------------------------------------")
+                        # cloud.key_world_item_3 = 1
+                        time.sleep(time_short_wait)
+                        story1_first_crossing()
+                        break
                 else:
-                    print("That is not what i have heard, come back later")
+                    print("You choose not to share a rumor, and are going back to the crossing")
                     print("---------------------------------------------------------")
                     # cloud.key_world_item_3 = 1
                     time.sleep(time_short_wait)
                     story1_first_crossing()
                     break
-            else:
-                print("You choose not to share a rumor, and are going back to the crossing")
-                print("---------------------------------------------------------")
-                # cloud.key_world_item_3 = 1
-                time.sleep(time_short_wait)
-                story1_first_crossing()
+            elif reward > 5:
+                print("Something more will happened")
                 break
-
 
 
 def story1_snow_in_south():
