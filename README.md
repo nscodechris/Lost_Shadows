@@ -9,7 +9,7 @@
 <details>
 <summary>
 <b><u>FIRST TIME INSTALLATION: </u></b> </summary><br /> <i> 
-<b><u>BETA VERSION ONLY FOR WINDOWS</u></b> <br />
+<b><u>BETA VERSION 1.0 ONLY FOR WINDOWS</u></b> <br />
 &#x2022; Download the file "LostShadows_install.zip" <br />
 &#x2022; Unzip and run the "Lost_Shadows" Application <br />
 <br />
@@ -27,8 +27,13 @@ Happy Gaming!!!
 
 <details>
 <summary>
-<b><u>NEW VERSION RELEASE: </u></b> </summary><br />
+<b><u>NEW VERSION RELEASE UPCOMING Version 1.1: </u></b> </summary><br />
  <i>
+Major bug fixes: <br />
+&#x2022; when you sell an item, next time enter store, the game crashed, fixed <br />
+&#x2022; game tick_tack added in story mode (special item will be received if you succeed) <br />
+&#x2022; north story added but not complete, save before, just for test <br />
+
 Download zip again <br />
 Copy and replace lib folder, to your game folder <br />
 Copy and replace these files, (to your game folder): <br />
