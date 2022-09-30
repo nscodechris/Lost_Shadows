@@ -23,7 +23,7 @@ from openpyxl import load_workbook
 from bs4 import BeautifulSoup
 import requests
 import re
-import hang_man_game
+
 
 # important file names:
 CURR_DIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -406,12 +406,33 @@ class YourHero:
         self.magic_cost = spell_power
         return spell_power
 
+    # when the shop is buying from you
+    def x_item_buying(self, name, shop_name, count):
+        # dont
+        # YourHero.buying_habits(self, shop_name, count, name)
+        path = dir_path.inventory_items_path + inventory_item_file
+        # in excel file, make temp buying count, erase and save, not use dt.to_excel!!
+        df_selling = pd.read_excel(path, shop_name)
+        item_list_for_index = pd.read_excel(dir_path.inventory_items_path + inventory_item_file, sheet_name=shop_name)
+        wb = openpyxl.load_workbook(dir_path.inventory_items_path + inventory_item_file)
+        ws = wb[shop_name]
+        row_numbers = item_list_for_index[item_list_for_index['Items'] == name].index[0]
+        row_numbers = row_numbers + 2
+        qty_column = ws.cell(row=row_numbers, column=3)
+        temp_qty = ws.cell(row=row_numbers, column=4)
+        temp_qty.value = int(count)
+        qty_new_value = qty_column.value + temp_qty.value
+        qty_column.value = qty_new_value
+        temp_qty.value = None
+        wb.save(dir_path.inventory_items_path + inventory_item_file)
+
     # Item money back when selling, from excel file, by qty of user_input
+    # when the store sells to you
     def x_item_selling(self, name, shop_name, count):
         YourHero.buying_habits(self, shop_name, count, name)
-
-
+        path = dir_path.inventory_items_path + inventory_item_file
         # in excel file, make temp buying count, erase and save, not use dt.to_excel!!
+        df_selling = pd.read_excel(path, shop_name)
         item_list_for_index = pd.read_excel(dir_path.inventory_items_path + inventory_item_file, sheet_name=shop_name)
         wb = openpyxl.load_workbook(dir_path.inventory_items_path + inventory_item_file)
         ws = wb[shop_name]
@@ -2246,6 +2267,7 @@ class YourHero:
                 b_colm = ws.cell(row=row_numbers, column=2)
                 b_colm.value = my_timer.get_time_hhmmss()
                 wb.save(path)
+                # wb.save(filename=path)
             elif start_time[0] != 0 and end_time[0] == 0:
                 # df_town_count["end"].replace([0], my_timer.get_time_hhmmss())
                 c_colm = ws.cell(row=row_numbers, column=3)
@@ -2570,10 +2592,14 @@ class YourHero:
                         elif int(sell_count) <= self.inventory["QTY"][int(res)]:
                             item_list = pd.read_excel(dir_path.inventory_items_path + inventory_item_file,
                                                       sheet_name=shop_name)
-                            dt = pd.DataFrame(item_list)
-                            dt.set_index("Items", inplace=True)
-                            dt.loc[sell_items]["Quantity"] += int(sell_count)
-                            dt.to_excel(dir_path.inventory_items_path + inventory_item_file, sheet_name=shop_name)
+
+                            YourHero.x_item_buying(self, sell_items, shop_name, sell_count)
+                            # if use code below, dt.to_excel overwrite the whole excel...causing error, leaveing
+                            # only one sheet, overwrites!!!
+                            # dt = pd.DataFrame(item_list)
+                            # dt.set_index("Items", inplace=True)
+                            # dt.loc[sell_items]["Quantity"] += int(sell_count)
+                            # dt.to_excel(dir_path.inventory_items_path + inventory_item_file, sheet_name=shop_name)
                             YourHero.x_money_back_store(self, sell_items, shop_name)
                             self.inventory["QTY"][int(res)] = self.inventory["QTY"][int(res)] - int(sell_count)
                             item_list = pd.DataFrame(self.inventory)
@@ -2582,7 +2608,7 @@ class YourHero:
                             res = str(item_index)[1:-1]
                             self.inventory["QTY"][int(res)] = \
                                 self.inventory["QTY"][int(res)] + int(sell_count) * self.store_money_back
-                            print(f"You sold {sell_count}, {sell_items}, and received {self.store_money_back} gil")
+                            print(f"You sold {sell_count}, {sell_items}, and received {int(sell_count) * self.store_money_back} gil")
                             print("---------------------------------------------------------")
                         else:
                             print("Write a number!!")
@@ -4498,7 +4524,6 @@ class GetImportant(Music):
     def __init__(self):
         super().__init__()
         
-        # self.install_file = "#_code_chris_098421_path_finder.txt"
         self.important = ""
         self.folder_name = ["save", "enemy", "inventory_items", "magic", "music", "weapons_armor", "level"]
         self.folder_music = ["main_intro", "chapter_1", "for all", "battle"]
@@ -4547,31 +4572,7 @@ class GetImportant(Music):
         input("press enter to start")
         print("----------------------------------------------------------------------------------------------")
         return self.dir_path
-    # music_path was used to get path and file name in same string, didnt work for pygame mixer.
-    def music_path(self):
-        extra_backslash = "\\\\"
-        # "main_intro", "chapter_1", "for all", "battle"]
-        for i in self.folder_music:
-            if i == "main_intro":
-                for x in self.music_main_mp3:
-                    main_music = self.dir_path[self.music] + i + extra_backslash + x
-                    self.dir_path.append(main_music)
-                    # return self.dir_path
-            elif i == "chapter_1":
-                for x in self.music_chapter_1_mp3:
-                    chapter_1_music = self.dir_path[self.music] + i + extra_backslash + x
-                    self.dir_path.append(chapter_1_music)
-                    # return self.dir_path
-            elif i == "for all":
-                for x in self.music_for_all_mp3:
-                    for_all_music = self.dir_path[self.music] + i + extra_backslash + x
-                    self.dir_path.append(for_all_music)
-                    # return self.dir_path
-            elif i == "battle":
-                for x in self.music_battle_mp3:
-                    battle_music = self.dir_path[self.music] + i + extra_backslash + x
-                    self.dir_path.append(battle_music)
-                    # return self.dir_path
+
     def music_path_2(self):
         extra_backslash = "\\\\"
         # "main_intro", "chapter_1", "for all", "battle"]
