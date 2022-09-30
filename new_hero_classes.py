@@ -408,8 +408,6 @@ class YourHero:
 
     # when the shop is buying from you
     def x_item_buying(self, name, shop_name, count):
-        # dont
-        # YourHero.buying_habits(self, shop_name, count, name)
         path = dir_path.inventory_items_path + inventory_item_file
         # in excel file, make temp buying count, erase and save, not use dt.to_excel!!
         df_selling = pd.read_excel(path, shop_name)
