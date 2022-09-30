@@ -11,7 +11,7 @@
 <b><u>FIRST TIME INSTALLATION: </u></b> </summary><br /> <i> 
 <b><u>BETA VERSION 1.0 ONLY FOR WINDOWS</u></b> <br />
 &#x2022; Download the file "LostShadows_install.zip" <br />
-&#x2022; Unzip and run the "Lost_Shadows" Application <br />
+&#x2022; Unzip and run the "new_hero_classes" Application <br />
 <br />
 Installation begins and starts to download music files for the game <br />
 <br />
