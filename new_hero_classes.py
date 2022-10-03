@@ -2174,6 +2174,8 @@ class YourHero:
                 leave = input("Are you sure?\n")
                 print("---------------------------------------------------------")
                 if leave.lower() == "yes" or leave.lower() == "y":
+
+
                     break
                 else:
                     choice = ""
@@ -3296,6 +3298,7 @@ class YourHero:
                 print(self.name, "you looted the", name, "and found", loot_qty, loot_give)
                 print("---------------------------------------------------------")
                 input("press enter to continue")
+
         else:
             print(self.name, "you looted the", name, "and found... nothing")
             print("---------------------------------------------------------")
@@ -4837,15 +4840,22 @@ class MakeExcelFiles:
             wb = openpyxl.Workbook()
             wb.save(path)
             wb.close()
-            MakeExcelFiles.PassProtect(self, path, "five@morning!Mind5")
+            # MakeExcelFiles.PassProtect(self, path, "five@morning!Mind5")
 
     def write_data(self, sheet_name, folder_name, work_book_name, df_name):
         path = (CURR_DIR_PATH + folder_name + work_book_name)
-        MakeExcelFiles.Remove_password_xlsx(self, path, "five@morning!Mind5")
+        # MakeExcelFiles.Remove_password_xlsx(self, path, "five@morning!Mind5")
         with pd.ExcelWriter(path, mode="a", engine="openpyxl") as writer:
             df_name.to_excel(writer, sheet_name=sheet_name, index=False, header=False)
 
-        MakeExcelFiles.PassProtect(self, path, "five@morning!Mind5")
+        # MakeExcelFiles.PassProtect(self, path, "five@morning!Mind5")
+
+    def delete_org_sheet(self, folder_name, file_name):
+        path = (CURR_DIR_PATH + folder_name + file_name)
+        book = openpyxl.load_workbook(path)
+        if "Sheet" in book.sheetnames:
+            book.remove(book["Sheet"])
+        book.save(path)
 
     def run_main(self):
 
@@ -4875,7 +4885,11 @@ class MakeExcelFiles:
         MakeExcelFiles.write_data(self, "weapon_powers", "\\weapons_armor", "\\weapons_armor.xlsx", self.df_weapons_power)
         MakeExcelFiles.write_data(self, "shop_buy", "\\weapons_armor", "\\weapons_armor.xlsx", self.df_weapons_buy)
         MakeExcelFiles.write_data(self, "shop_sell", "\\weapons_armor", "\\weapons_armor.xlsx", self.df_weapons_sell)
-
+        MakeExcelFiles.delete_org_sheet(self, "\\enemy", "\\enemy_name.xlsx")
+        MakeExcelFiles.delete_org_sheet(self, "\\inventory_items", "\\item_store.xlsx")
+        MakeExcelFiles.delete_org_sheet(self, "\\magic", "\\cast_magic.xlsx")
+        MakeExcelFiles.delete_org_sheet(self, "\\weapons_armor", "\\weapons_armor.xlsx")
+        MakeExcelFiles.delete_org_sheet(self, "\\level", "\\level_up.xlsx")
     def PassProtect(self, Path, Pass):
 
         xlApp = EnsureDispatch("Excel.Application")
