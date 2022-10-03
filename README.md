@@ -33,6 +33,8 @@ Major bug fixes: <br />
 &#x2022; when you sell an item, next time enter store, the game crashed, fixed <br />
 &#x2022; game tick_tack added in story mode (special item will be received if you succeed) <br />
 &#x2022; north story added but not complete, save before, just for test <br />
+&#x2022; pass-protection added to Excel files, (so no accidents will happen) <br />
+
 
 Download zip again <br />
 Copy and replace lib folder, to your game folder <br />
@@ -49,7 +51,6 @@ Files like: <br />
 &#x2022; game_tick_tack.py <br />
 &#x2022; hang_man_game.py <br />
 They will be included in the game later, side games.
-
 <br />
 
 Files like: <br /> 
@@ -57,7 +58,6 @@ Files like: <br />
 &#x2022; test_request.py <br /> 
 &#x2022; music_soup_test.py <br /> 
 They are testing files for main file "new_hero_classes.py"
-
 <br />
 
 Files like: <br /> 
