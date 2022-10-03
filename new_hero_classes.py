@@ -5421,118 +5421,124 @@ def x_save_hero():
                     print(YourHero.x_stat_load(cloud and elena))
                     x_load.close()
                     print("---------------------------------------------------------")
-                save_choice = int(input("Choose a file to save over: "))
-                if save_choice in file_range and save_choice != 0:
-                    your_choice = files[int(save_choice) - 1]
-                    load_choice = your_choice.removesuffix('.dat')
+                save_choice = input(f"Choose a file to save over, choose by number 1 to {count_files}:")
+                if save_choice.isnumeric():
+                    save_choice = int(save_choice)
+                    if save_choice in file_range and save_choice != 0:
+                        your_choice = files[int(save_choice) - 1]
+                        load_choice = your_choice.removesuffix('.dat')
 
-                    os.remove(dir_path.save_path + load_choice + ".dat")
-                    os.remove(dir_path.save_path + load_choice + ".dir")
-                    os.remove(dir_path.save_path + load_choice + ".bak")
+                        os.remove(dir_path.save_path + load_choice + ".dat")
+                        os.remove(dir_path.save_path + load_choice + ".dir")
+                        os.remove(dir_path.save_path + load_choice + ".bak")
 
-                    save_file = shelve.open(temp_save + file_name + date)
-                    # Elena
-                    elena.exp_show = save_file['hero.exp_show']
-                    elena.exp = save_file['hero.exp']
-                    elena.name = save_file['hero.name']
-                    elena.level = save_file['hero.level']
-                    elena.hp = save_file['hero.hp']
-                    elena.mp = save_file['hero.mp']
-                    elena.bonus_factor = save_file['hero.bonus_factor']
-                    elena.factor_level_up = save_file['hero.factor_level_up']
-                    # elena.chapter = save_file['hero.story_number']
-                    elena.story_name = save_file['hero.story_name']
-                    elena.key_item_1 = save_file['hero.key_item_1']
-                    elena.key_item_2 = save_file['hero.key_item_2']
-                    elena.key_item_3 = save_file['hero.key_item_3']
-                    elena.key_item_4 = save_file['hero.key_item_4']
-                    elena.key_item_1_name = save_file['hero.key_item_name_1']
-                    elena.key_item_2_name = save_file['hero.key_item_name_2']
-                    elena.key_item_3_name = save_file['hero.key_item_name_3']
-                    elena.key_item_4_name = save_file['hero.key_item_name_4']
-                    elena.chapter = save_file['hero.chapter']
-                    elena.progress = save_file['hero_progress']
-                    elena.magic_spells = save_file['hero.magic_spells']
-                    elena.magic_slots = save_file['hero.magic_slots']
-                    elena.magic_slots_max = save_file['hero.magic_slots_max']
-                    elena.progress = save_file['hero_progress']
-                    elena.armory_inventory = save_file['hero.armory_inventory']
-                    elena.inventory = save_file['hero.inventory']
+                        save_file = shelve.open(temp_save + file_name + date)
+                        # Elena
+                        elena.exp_show = save_file['hero.exp_show']
+                        elena.exp = save_file['hero.exp']
+                        elena.name = save_file['hero.name']
+                        elena.level = save_file['hero.level']
+                        elena.hp = save_file['hero.hp']
+                        elena.mp = save_file['hero.mp']
+                        elena.bonus_factor = save_file['hero.bonus_factor']
+                        elena.factor_level_up = save_file['hero.factor_level_up']
+                        # elena.chapter = save_file['hero.story_number']
+                        elena.story_name = save_file['hero.story_name']
+                        elena.key_item_1 = save_file['hero.key_item_1']
+                        elena.key_item_2 = save_file['hero.key_item_2']
+                        elena.key_item_3 = save_file['hero.key_item_3']
+                        elena.key_item_4 = save_file['hero.key_item_4']
+                        elena.key_item_1_name = save_file['hero.key_item_name_1']
+                        elena.key_item_2_name = save_file['hero.key_item_name_2']
+                        elena.key_item_3_name = save_file['hero.key_item_name_3']
+                        elena.key_item_4_name = save_file['hero.key_item_name_4']
+                        elena.chapter = save_file['hero.chapter']
+                        elena.progress = save_file['hero_progress']
+                        elena.magic_spells = save_file['hero.magic_spells']
+                        elena.magic_slots = save_file['hero.magic_slots']
+                        elena.magic_slots_max = save_file['hero.magic_slots_max']
+                        elena.progress = save_file['hero_progress']
+                        elena.armory_inventory = save_file['hero.armory_inventory']
+                        elena.inventory = save_file['hero.inventory']
 
-                    # Cloud
-                    cloud.exp_show = save_file['hero2.exp_show']
-                    cloud.exp = save_file['hero2.exp']
-                    cloud.name = save_file['hero2.name']
-                    cloud.level = save_file['hero2.level']
-                    cloud.hp = save_file['hero2.hp']
-                    cloud.mp = save_file['hero2.mp']
-                    cloud.bonus_factor = save_file['hero2.bonus_factor']
-                    cloud.factor_level_up = save_file['hero2.factor_level_up']
-                    # cloud.story_number = save_file['hero2.story_number']
-                    cloud.story_name = save_file['hero2.story_name']
-                    cloud.chapter = save_file['hero2.chapter']
-                    cloud.key_item_1 = save_file['hero2.key_item_1']
-                    cloud.key_item_2 = save_file['hero2.key_item_2']
-                    cloud.key_item_3 = save_file['hero2.key_item_3']
-                    cloud.key_item_4 = save_file['hero2.key_item_4']
-                    cloud.key_item_1_name = save_file['hero2.key_item_name_1']
-                    cloud.key_item_2_name = save_file['hero2.key_item_name_2']
-                    cloud.key_item_3_name = save_file['hero2.key_item_name_3']
-                    cloud.key_item_4_name = save_file['hero2.key_item_name_4']
-                    cloud.chapter_1_round_room_count = save_file['hero2.chapter_1_round_room_count']
-                    cloud.chapter_1_ally_woman_wall_away = save_file['hero2.chapter_1_ally_woman_wall_away']
-                    cloud.chapter_1_ally_woman_green_hat_away = save_file['hero2.chapter_1_ally_woman_g_hat_away']
-                    cloud.sleep_abreheim_inn = save_file['hero2.sleep_abreheim_inn']
-                    cloud.inn_room_1 = save_file['hero2.inn_room_1']
-                    cloud.inn_room_2 = save_file['hero2.inn_room_2']
-                    cloud.food_1 = save_file['hero2.food_1']
-                    cloud.food_2 = save_file['hero2.food_2']
-                    cloud.magic_spells = save_file['hero2.magic_spells']
-                    cloud.magic_slots = save_file['hero2.magic_slots']
-                    cloud.magic_slots_max = save_file['hero2.magic_slots_max']
-                    cloud.progress = save_file['hero2_progress']
-                    cloud.armory_inventory = save_file['hero2.armory_inventory']
-                    cloud.inventory = save_file['hero2.inventory']
+                        # Cloud
+                        cloud.exp_show = save_file['hero2.exp_show']
+                        cloud.exp = save_file['hero2.exp']
+                        cloud.name = save_file['hero2.name']
+                        cloud.level = save_file['hero2.level']
+                        cloud.hp = save_file['hero2.hp']
+                        cloud.mp = save_file['hero2.mp']
+                        cloud.bonus_factor = save_file['hero2.bonus_factor']
+                        cloud.factor_level_up = save_file['hero2.factor_level_up']
+                        # cloud.story_number = save_file['hero2.story_number']
+                        cloud.story_name = save_file['hero2.story_name']
+                        cloud.chapter = save_file['hero2.chapter']
+                        cloud.key_item_1 = save_file['hero2.key_item_1']
+                        cloud.key_item_2 = save_file['hero2.key_item_2']
+                        cloud.key_item_3 = save_file['hero2.key_item_3']
+                        cloud.key_item_4 = save_file['hero2.key_item_4']
+                        cloud.key_item_1_name = save_file['hero2.key_item_name_1']
+                        cloud.key_item_2_name = save_file['hero2.key_item_name_2']
+                        cloud.key_item_3_name = save_file['hero2.key_item_name_3']
+                        cloud.key_item_4_name = save_file['hero2.key_item_name_4']
+                        cloud.chapter_1_round_room_count = save_file['hero2.chapter_1_round_room_count']
+                        cloud.chapter_1_ally_woman_wall_away = save_file['hero2.chapter_1_ally_woman_wall_away']
+                        cloud.chapter_1_ally_woman_green_hat_away = save_file['hero2.chapter_1_ally_woman_g_hat_away']
+                        cloud.sleep_abreheim_inn = save_file['hero2.sleep_abreheim_inn']
+                        cloud.inn_room_1 = save_file['hero2.inn_room_1']
+                        cloud.inn_room_2 = save_file['hero2.inn_room_2']
+                        cloud.food_1 = save_file['hero2.food_1']
+                        cloud.food_2 = save_file['hero2.food_2']
+                        cloud.magic_spells = save_file['hero2.magic_spells']
+                        cloud.magic_slots = save_file['hero2.magic_slots']
+                        cloud.magic_slots_max = save_file['hero2.magic_slots_max']
+                        cloud.progress = save_file['hero2_progress']
+                        cloud.armory_inventory = save_file['hero2.armory_inventory']
+                        cloud.inventory = save_file['hero2.inventory']
 
-                    # Enemies
-                    enemy.e_exp = save_file['enemy.exp']
-                    enemy.e_level = save_file['enemy.level']
-                    enemy.e_hp = save_file['enemy.hp']
-                    enemy.e_factor_for_level_up = save_file['enemy.factor_level_up']
-                    enemy.e_bonus_factor = save_file['enemy.bonus_factor']
-                    enemy_2.e_exp = save_file['enemy2.exp']
-                    enemy_2.e_level = save_file['enemy2.level']
-                    enemy_2.e_hp = save_file['enemy2.hp']
-                    enemy_2.e_factor_for_level_up = save_file['enemy2.factor_level_up']
-                    enemy_2.e_bonus_factor = save_file['enemy2.bonus_factor']
-                    enemy_3.e_exp = save_file['enemy3.exp']
-                    enemy_3.e_level = save_file['enemy3.level']
-                    enemy_3.e_hp = save_file['enemy3.hp']
-                    enemy_3.e_factor_for_level_up = save_file['enemy3.factor_level_up']
-                    enemy_3.e_bonus_factor = save_file['enemy3.bonus_factor']
+                        # Enemies
+                        enemy.e_exp = save_file['enemy.exp']
+                        enemy.e_level = save_file['enemy.level']
+                        enemy.e_hp = save_file['enemy.hp']
+                        enemy.e_factor_for_level_up = save_file['enemy.factor_level_up']
+                        enemy.e_bonus_factor = save_file['enemy.bonus_factor']
+                        enemy_2.e_exp = save_file['enemy2.exp']
+                        enemy_2.e_level = save_file['enemy2.level']
+                        enemy_2.e_hp = save_file['enemy2.hp']
+                        enemy_2.e_factor_for_level_up = save_file['enemy2.factor_level_up']
+                        enemy_2.e_bonus_factor = save_file['enemy2.bonus_factor']
+                        enemy_3.e_exp = save_file['enemy3.exp']
+                        enemy_3.e_level = save_file['enemy3.level']
+                        enemy_3.e_hp = save_file['enemy3.hp']
+                        enemy_3.e_factor_for_level_up = save_file['enemy3.factor_level_up']
+                        enemy_3.e_bonus_factor = save_file['enemy3.bonus_factor']
 
-                    # Time
-                    my_timer.start = save_file['time_start']
-                    my_timer.pause = save_file['time_pause']
+                        # Time
+                        my_timer.start = save_file['time_start']
+                        my_timer.pause = save_file['time_pause']
 
-                    source_dir = temp_save
-                    target_dir = dir_path.save_path
-                    file_names = os.listdir(source_dir)
-                    for file_name in file_names:
-                        shutil.move(os.path.join(source_dir, file_name), target_dir)
+                        source_dir = temp_save
+                        target_dir = dir_path.save_path
+                        file_names = os.listdir(source_dir)
+                        for file_name in file_names:
+                            shutil.move(os.path.join(source_dir, file_name), target_dir)
 
-                    save_text = "Saving...\n"
-                    now = time.time()
-                    future = now + 3
-                    while time.time() < future:
-                        for char in save_text:
-                            sys.stdout.write(char)
-                            sys.stdout.flush()
-                            time.sleep(time_save)
+                        save_text = "Saving...\n"
+                        now = time.time()
+                        future = now + 3
+                        while time.time() < future:
+                            for char in save_text:
+                                sys.stdout.write(char)
+                                sys.stdout.flush()
+                                time.sleep(time_save)
 
-                    input("\nGame saved: \nPress enter")
-                    my_timer.restart()
-                    break
+                        input("\nGame saved: \nPress enter")
+                        my_timer.restart()
+                        break
+                else:
+                    print("Choose a valid number!")
+                    print("---------------------------------------------------------")
+                    x_save_hero()
             elif user_input.lower() == "new save":
                 save_file = shelve.open(dir_path.save_path + file_name + date)
                 # Elena
@@ -5689,132 +5695,133 @@ def x_load_hero():
 
                         save_file.close()
                         print("---------------------------------------------------------")
-                    save_choice = int(input("Choose a file to load from: "))
+                    save_choice = input(f"Choose a file to load from, choose by number: 1 to {count_files} ")
                     # if user_input.lower() == "quit" or user_input == "go back" or user_input == "main game":
+                    if save_choice.isnumeric():
+                        save_choice = int(save_choice)
+                        if save_choice in file_range and save_choice != 0:
+                            your_choice = files[int(save_choice) - 1]
+                            load_choice = your_choice.removesuffix('.dat')
+                            save_file = shelve.open(dir_path.save_path + load_choice)
+                            # Elena
+                            elena.exp_show = save_file['hero.exp_show']
+                            elena.exp = save_file['hero.exp']
+                            elena.name = save_file['hero.name']
+                            elena.level = save_file['hero.level']
+                            elena.hp = save_file['hero.hp']
+                            elena.mp = save_file['hero.mp']
+                            elena.bonus_factor = save_file['hero.bonus_factor']
+                            elena.factor_level_up = save_file['hero.factor_level_up']
+                            # elena.chapter = save_file['hero.story_number']
+                            elena.story_name = save_file['hero.story_name']
+                            elena.key_item_1 = save_file['hero.key_item_1']
+                            elena.key_item_2 = save_file['hero.key_item_2']
+                            elena.key_item_3 = save_file['hero.key_item_3']
+                            elena.key_item_4 = save_file['hero.key_item_4']
+                            elena.key_item_1_name = save_file['hero.key_item_name_1']
+                            elena.key_item_2_name = save_file['hero.key_item_name_2']
+                            elena.key_item_3_name = save_file['hero.key_item_name_3']
+                            elena.key_item_4_name = save_file['hero.key_item_name_4']
+                            elena.chapter = save_file['hero.chapter']
+                            elena.magic_spells = save_file['hero.magic_spells']
+                            elena.progress = save_file['hero_progress']
+                            elena.magic_slots = save_file['hero.magic_slots']
+                            elena.magic_slots_max = save_file['hero.magic_slots_max']
+                            elena.armory_inventory = save_file['hero.armory_inventory']
+                            elena.inventory = save_file['hero.inventory']
 
-                    if save_choice in file_range and save_choice != 0:
-                        your_choice = files[int(save_choice) - 1]
-                        load_choice = your_choice.removesuffix('.dat')
-                        save_file = shelve.open(dir_path.save_path + load_choice)
-                        # Elena
-                        elena.exp_show = save_file['hero.exp_show']
-                        elena.exp = save_file['hero.exp']
-                        elena.name = save_file['hero.name']
-                        elena.level = save_file['hero.level']
-                        elena.hp = save_file['hero.hp']
-                        elena.mp = save_file['hero.mp']
-                        elena.bonus_factor = save_file['hero.bonus_factor']
-                        elena.factor_level_up = save_file['hero.factor_level_up']
-                        # elena.chapter = save_file['hero.story_number']
-                        elena.story_name = save_file['hero.story_name']
-                        elena.key_item_1 = save_file['hero.key_item_1']
-                        elena.key_item_2 = save_file['hero.key_item_2']
-                        elena.key_item_3 = save_file['hero.key_item_3']
-                        elena.key_item_4 = save_file['hero.key_item_4']
-                        elena.key_item_1_name = save_file['hero.key_item_name_1']
-                        elena.key_item_2_name = save_file['hero.key_item_name_2']
-                        elena.key_item_3_name = save_file['hero.key_item_name_3']
-                        elena.key_item_4_name = save_file['hero.key_item_name_4']
-                        elena.chapter = save_file['hero.chapter']
-                        elena.magic_spells = save_file['hero.magic_spells']
-                        elena.progress = save_file['hero_progress']
-                        elena.magic_slots = save_file['hero.magic_slots']
-                        elena.magic_slots_max = save_file['hero.magic_slots_max']
-                        elena.armory_inventory = save_file['hero.armory_inventory']
-                        elena.inventory = save_file['hero.inventory']
+                            # Cloud
+                            cloud.exp_show = save_file['hero2.exp_show']
+                            cloud.progress = save_file['hero2_progress']
+                            cloud.exp = save_file['hero2.exp']
+                            cloud.name = save_file['hero2.name']
+                            cloud.level = save_file['hero2.level']
+                            cloud.hp = save_file['hero2.hp']
+                            cloud.mp = save_file['hero2.mp']
+                            cloud.bonus_factor = save_file['hero2.bonus_factor']
+                            cloud.factor_level_up = save_file['hero2.factor_level_up']
+                            # cloud.story_number = save_file['hero2.story_number']
+                            cloud.story_name = save_file['hero2.story_name']
+                            cloud.chapter = save_file['hero2.chapter']
+                            cloud.key_item_1 = save_file['hero2.key_item_1']
+                            cloud.key_item_2 = save_file['hero2.key_item_2']
+                            cloud.key_item_3 = save_file['hero2.key_item_3']
+                            cloud.key_item_4 = save_file['hero2.key_item_4']
+                            cloud.key_item_1_name = save_file['hero2.key_item_name_1']
+                            cloud.key_item_2_name = save_file['hero2.key_item_name_2']
+                            cloud.key_item_3_name = save_file['hero2.key_item_name_3']
+                            cloud.key_item_4_name = save_file['hero2.key_item_name_4']
+                            cloud.chapter_1_round_room_count = save_file['hero2.chapter_1_round_room_count']
+                            cloud.chapter_1_ally_woman_wall_away = save_file['hero2.chapter_1_ally_woman_wall_away']
+                            cloud.chapter_1_ally_woman_green_hat_away = save_file['hero2.chapter_1_ally_woman_g_hat_away']
+                            cloud.sleep_abreheim_inn = save_file['hero2.sleep_abreheim_inn']
+                            cloud.inn_room_1 = save_file['hero2.inn_room_1']
+                            cloud.inn_room_2 = save_file['hero2.inn_room_2']
+                            cloud.food_1 = save_file['hero2.food_1']
+                            cloud.food_2 = save_file['hero2.food_2']
+                            cloud.magic_spells = save_file['hero2.magic_spells']
+                            cloud.magic_slots = save_file['hero2.magic_slots']
+                            cloud.magic_slots_max = save_file['hero2.magic_slots_max']
+                            cloud.progress = save_file['hero2_progress']
+                            cloud.armory_inventory = save_file['hero2.armory_inventory']
+                            cloud.inventory = save_file['hero2.inventory']
 
-                        # Cloud
-                        cloud.exp_show = save_file['hero2.exp_show']
-                        cloud.progress = save_file['hero2_progress']
-                        cloud.exp = save_file['hero2.exp']
-                        cloud.name = save_file['hero2.name']
-                        cloud.level = save_file['hero2.level']
-                        cloud.hp = save_file['hero2.hp']
-                        cloud.mp = save_file['hero2.mp']
-                        cloud.bonus_factor = save_file['hero2.bonus_factor']
-                        cloud.factor_level_up = save_file['hero2.factor_level_up']
-                        # cloud.story_number = save_file['hero2.story_number']
-                        cloud.story_name = save_file['hero2.story_name']
-                        cloud.chapter = save_file['hero2.chapter']
-                        cloud.key_item_1 = save_file['hero2.key_item_1']
-                        cloud.key_item_2 = save_file['hero2.key_item_2']
-                        cloud.key_item_3 = save_file['hero2.key_item_3']
-                        cloud.key_item_4 = save_file['hero2.key_item_4']
-                        cloud.key_item_1_name = save_file['hero2.key_item_name_1']
-                        cloud.key_item_2_name = save_file['hero2.key_item_name_2']
-                        cloud.key_item_3_name = save_file['hero2.key_item_name_3']
-                        cloud.key_item_4_name = save_file['hero2.key_item_name_4']
-                        cloud.chapter_1_round_room_count = save_file['hero2.chapter_1_round_room_count']
-                        cloud.chapter_1_ally_woman_wall_away = save_file['hero2.chapter_1_ally_woman_wall_away']
-                        cloud.chapter_1_ally_woman_green_hat_away = save_file['hero2.chapter_1_ally_woman_g_hat_away']
-                        cloud.sleep_abreheim_inn = save_file['hero2.sleep_abreheim_inn']
-                        cloud.inn_room_1 = save_file['hero2.inn_room_1']
-                        cloud.inn_room_2 = save_file['hero2.inn_room_2']
-                        cloud.food_1 = save_file['hero2.food_1']
-                        cloud.food_2 = save_file['hero2.food_2']
-                        cloud.magic_spells = save_file['hero2.magic_spells']
-                        cloud.magic_slots = save_file['hero2.magic_slots']
-                        cloud.magic_slots_max = save_file['hero2.magic_slots_max']
-                        cloud.progress = save_file['hero2_progress']
-                        cloud.armory_inventory = save_file['hero2.armory_inventory']
-                        cloud.inventory = save_file['hero2.inventory']
+                            # Enemies
+                            enemy.e_exp = save_file['enemy.exp']
+                            enemy.e_level = save_file['enemy.level']
+                            enemy.e_hp = save_file['enemy.hp']
+                            enemy.e_factor_for_level_up = save_file['enemy.factor_level_up']
+                            enemy.e_bonus_factor = save_file['enemy.bonus_factor']
+                            enemy_2.e_exp = save_file['enemy2.exp']
+                            enemy_2.e_level = save_file['enemy2.level']
+                            enemy_2.e_hp = save_file['enemy2.hp']
+                            enemy_2.e_factor_for_level_up = save_file['enemy2.factor_level_up']
+                            enemy_2.e_bonus_factor = save_file['enemy2.bonus_factor']
+                            enemy_3.e_exp = save_file['enemy3.exp']
+                            enemy_3.e_level = save_file['enemy3.level']
+                            enemy_3.e_hp = save_file['enemy3.hp']
+                            enemy_3.e_factor_for_level_up = save_file['enemy3.factor_level_up']
+                            enemy_3.e_bonus_factor = save_file['enemy3.bonus_factor']
 
-                        # Enemies
-                        enemy.e_exp = save_file['enemy.exp']
-                        enemy.e_level = save_file['enemy.level']
-                        enemy.e_hp = save_file['enemy.hp']
-                        enemy.e_factor_for_level_up = save_file['enemy.factor_level_up']
-                        enemy.e_bonus_factor = save_file['enemy.bonus_factor']
-                        enemy_2.e_exp = save_file['enemy2.exp']
-                        enemy_2.e_level = save_file['enemy2.level']
-                        enemy_2.e_hp = save_file['enemy2.hp']
-                        enemy_2.e_factor_for_level_up = save_file['enemy2.factor_level_up']
-                        enemy_2.e_bonus_factor = save_file['enemy2.bonus_factor']
-                        enemy_3.e_exp = save_file['enemy3.exp']
-                        enemy_3.e_level = save_file['enemy3.level']
-                        enemy_3.e_hp = save_file['enemy3.hp']
-                        enemy_3.e_factor_for_level_up = save_file['enemy3.factor_level_up']
-                        enemy_3.e_bonus_factor = save_file['enemy3.bonus_factor']
+                            # Time
+                            my_timer.start = save_file['time_start']
+                            my_timer.pause = save_file['time_pause']
 
-                        # Time
-                        my_timer.start = save_file['time_start']
-                        my_timer.pause = save_file['time_pause']
-
-                        print("\rLoading.....", end="")
-                        time.sleep(time_load)
-                        print("\rtips: use antidote to cure from poison", end="")
-                        time.sleep(time_load)
-                        print("\rLoading.....", end="")
-                        time.sleep(time_load)
-                        print("\rtips: use silver_dust to cure from paralyzed", end="")
-                        time.sleep(time_load)
-                        print("\rLoad complete\n", end="")
-                        time.sleep(time_load)
-                        save_file.close()
-                        my_timer.restart()
-                        my_timer.print_time()
-                        YourHero.x_initials_stats(elena)
-                        YourHero.x_initials_stats(cloud)
-                        Enemy.ex_initials_stats(enemy)
-                        Enemy.ex_initials_stats(enemy_2)
-                        Enemy.ex_initials_stats(enemy_3)
-                        print("---------------------------------------------------------")
-                        print(cloud.stat)
-                        print("---------------------------------------------------------")
-                        print(elena.stat)
-                        input("Press enter to continue")
-                        print(elena.item_list)
-                        print("---------------------------------------------------------")
-                        print(cloud.item_list)
-                        print("---------------------------------------------------------")
-                        input("Press enter to continue")
-                        print(elena.total_stat)
-                        print("---------------------------------------------------------")
-                        print(cloud.total_stat)
-                        print("---------------------------------------------------------")
-                        input("Press enter to continue\n")
-                        x_load = 0
-                        YourHero.x_story_chapter_count(elena)
+                            print("\rLoading.....", end="")
+                            time.sleep(time_load)
+                            print("\rtips: use antidote to cure from poison", end="")
+                            time.sleep(time_load)
+                            print("\rLoading.....", end="")
+                            time.sleep(time_load)
+                            print("\rtips: use silver_dust to cure from paralyzed", end="")
+                            time.sleep(time_load)
+                            print("\rLoad complete\n", end="")
+                            time.sleep(time_load)
+                            save_file.close()
+                            my_timer.restart()
+                            my_timer.print_time()
+                            YourHero.x_initials_stats(elena)
+                            YourHero.x_initials_stats(cloud)
+                            Enemy.ex_initials_stats(enemy)
+                            Enemy.ex_initials_stats(enemy_2)
+                            Enemy.ex_initials_stats(enemy_3)
+                            print("---------------------------------------------------------")
+                            print(cloud.stat)
+                            print("---------------------------------------------------------")
+                            print(elena.stat)
+                            input("Press enter to continue")
+                            print(elena.item_list)
+                            print("---------------------------------------------------------")
+                            print(cloud.item_list)
+                            print("---------------------------------------------------------")
+                            input("Press enter to continue")
+                            print(elena.total_stat)
+                            print("---------------------------------------------------------")
+                            print(cloud.total_stat)
+                            print("---------------------------------------------------------")
+                            input("Press enter to continue\n")
+                            x_load = 0
+                            YourHero.x_story_chapter_count(elena)
                     else:
                         print("Please choose a valid number")
                         x_load_hero()
