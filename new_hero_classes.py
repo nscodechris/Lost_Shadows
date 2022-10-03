@@ -19,10 +19,11 @@ import secrets
 import openpyxl
 import openpyxl as xl
 from pathlib import Path
-from openpyxl import load_workbook
 from bs4 import BeautifulSoup
 import requests
 import re
+import win32com
+from win32com.client.gencache import EnsureDispatch
 
 
 # important file names:
@@ -4836,17 +4837,15 @@ class MakeExcelFiles:
             wb = openpyxl.Workbook()
             wb.save(path)
             wb.close()
+            MakeExcelFiles.PassProtect(self, path, "five@morning!Mind5")
 
     def write_data(self, sheet_name, folder_name, work_book_name, df_name):
         path = (CURR_DIR_PATH + folder_name + work_book_name)
-        book = load_workbook(path)
-        writer = pd.ExcelWriter(path, engine='openpyxl')
-        writer.book = book
-        df_name.to_excel(writer, sheet_name=sheet_name, index=False, header=False)
+        MakeExcelFiles.Remove_password_xlsx(self, path, "five@morning!Mind5")
+        with pd.ExcelWriter(path, mode="a", engine="openpyxl") as writer:
+            df_name.to_excel(writer, sheet_name=sheet_name, index=False, header=False)
 
-        if "Sheet" in book.sheetnames:
-            book.remove(book["Sheet"])
-        writer.save()
+        MakeExcelFiles.PassProtect(self, path, "five@morning!Mind5")
 
     def run_main(self):
 
@@ -4876,6 +4875,23 @@ class MakeExcelFiles:
         MakeExcelFiles.write_data(self, "weapon_powers", "\\weapons_armor", "\\weapons_armor.xlsx", self.df_weapons_power)
         MakeExcelFiles.write_data(self, "shop_buy", "\\weapons_armor", "\\weapons_armor.xlsx", self.df_weapons_buy)
         MakeExcelFiles.write_data(self, "shop_sell", "\\weapons_armor", "\\weapons_armor.xlsx", self.df_weapons_sell)
+
+    def PassProtect(self, Path, Pass):
+
+        xlApp = EnsureDispatch("Excel.Application")
+        xlwb = xlApp.Workbooks.Open(Path)
+        xlApp.DisplayAlerts = False
+        xlwb.Visible = False
+        xlwb.SaveAs(Path, Password=Pass)
+        xlwb.Close()
+        xlApp.Quit()
+
+    def Remove_password_xlsx(self, filename, pw_str):
+        xcl = win32com.client.Dispatch("Excel.Application")
+        wb = xcl.Workbooks.Open(filename, False, False, None, pw_str)
+        xcl.DisplayAlerts = False
+        wb.SaveAs(filename, None, '', '')
+        xcl.Quit()
 
 class MusicDownload:
     def __init__(self, url):
