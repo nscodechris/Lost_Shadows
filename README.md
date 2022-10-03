@@ -33,7 +33,6 @@ Major bug fixes: <br />
 &#x2022; when you sell an item, next time enter store, the game crashed, fixed <br />
 &#x2022; game tick_tack added in story mode (special item will be received if you succeed) <br />
 &#x2022; north story added but not complete, save before, just for test <br />
-&#x2022; pass-protection added to Excel files, (so no accidents will happen) <br />
 
 
 Download zip again <br />
