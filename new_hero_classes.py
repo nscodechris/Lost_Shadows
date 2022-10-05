@@ -28,8 +28,7 @@ from win32com.client.gencache import EnsureDispatch
 
 # important file names:
 CURR_DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-
-
+GAME_VERSION = "VER 1.1"
 
 weapon_armor_file = "weapons_armor.xlsx"
 weapon_armor_file_sheet_shop_sell = "shop_sell"
@@ -4546,6 +4545,7 @@ class GetImportant(Music):
         self.for_all_path = 8
         self.battle_path = 9
 
+
     def important_paths(self):
         # place_find = os.path.abspath(self.install_file)
         use_path_folder = CURR_DIR_PATH # place_find[:-36]
@@ -4560,7 +4560,19 @@ class GetImportant(Music):
         GetImportant.music_path_2(self)
         # input("press enter")
         f.close()
+        with open("lost_shadow_installed.txt", "a") as f:
+            f.write(f"{GetImportant.version_control(self)}\n")
+            f.close()
         return self.dir_path
+
+    def version_control(self):
+        file = open(CURR_DIR_PATH + "\\lost_shadow_installed.txt")
+        content = file.readlines()
+        try:
+            ver = content[1]
+        except IndexError:
+            ver = GAME_VERSION
+        return ver
 
     def install_game(self):
         print("\nWelcome to install menu")
@@ -4606,34 +4618,14 @@ class DirectoryPaths:
         self.for_all_path = ""
         self.battle_path = ""
 
-
-
-
-
 class InventoryItems:
-    def __init__(self):
-        self.abreheim_shop = [
-            ['Items', 'Cost', "Quantity"],
-            ['potion', 50, 5],
-            ['ether', 1500, 5],
-            ['antidote', 80, 5],
-            ['phoenix_down', 300, 5],
-            ['silver_dust', 150, 5],
-            ['tent', 3000, 5],
-        ]
-        self.abreheim_shop_defaulf = [
-            ['Items', 'Cost', "Quantity"],
-            ['potion', 50, 5],
-            ['ether', 1500, 5],
-            ['antidote', 80, 5],
-            ['phoenix_down', 300, 5],
-            ['silver_dust', 150, 5],
-            ['tent', 3000, 5],
-        ]
+    def __init__(self, items, items_default):
+        self.shop = items
+        self.shop_default = items_default
         self.store_count = [
             ['town', 'start', 'end', 'count'],
             ["Abreheim's items", 0, 0, ""],
-            ["Lucy", 0, 0, ""],
+
         ]
         self.buy_history = [
 
@@ -4708,16 +4700,18 @@ class Cast_Magic:
         ]
 
 
+
 class EnemyName:
-    def __init__(self):
-        self.enemy_name = [
-            ["adjective", "name", "status_give", "immune", "loot", "qty_loot"],
-            ['Big', "Giant", "", "", "potion", 1],
-            ['Scary', "Spider", "", "", "silver_dust", 1],
-            ['Unfatithful', "Dragon", "", "fire", "potion", 1],
-            ['Demon', "Snake", "poison", "", "potion", 1],
-            ['Brutal', "Lizard", "", "", "antidote", 1],
-        ]
+        def __init__(self):
+            self.enemy_name = [
+                ["adjective", "name", "status_give", "immune", "loot", "qty_loot"],
+                ['Big', "Giant", "", "", "potion", 1],
+                ['Scary', "Spider", "", "", "silver_dust", 1],
+                ['Unfatithful', "Dragon", "", "fire", "potion", 1],
+                ['Demon', "Snake", "poison", "", "potion", 1],
+                ['Brutal', "Lizard", "", "", "antidote", 1],
+            ]
+
 
 
 class LevelEnemy:
@@ -4747,6 +4741,7 @@ class LevelEnemy:
             [20, 17.34, 17.34, 57, 3, "", 25.12, 3.5, 2.5, 2829],
 
         ]
+
 
 
 class WeaponsArmor:
@@ -4786,7 +4781,41 @@ class WeaponsArmor:
             ['silver ring', 0, 7500, 0], ]
 
 
-create_inventory = InventoryItems()
+abreheim = InventoryItems([
+        ['Items', 'Cost', "Quantity"],
+        ['potion', 50, 5],
+        ['ether', 1500, 5],
+        ['antidote', 80, 5],
+        ['phoenix_down', 300, 5],
+        ['silver_dust', 150, 5],
+        ['tent', 3000, 5],
+    ], [
+        ['Items', 'Cost', "Quantity"],
+        ['potion', 50, 5],
+        ['ether', 1500, 5],
+        ['antidote', 80, 5],
+        ['phoenix_down', 300, 5],
+        ['silver_dust', 150, 5],
+        ['tent', 3000, 5],
+    ])
+north_cave_shop = InventoryItems([
+        ['Items', 'Cost', "Quantity"],
+        ['potion', 250, 5],
+        ['ether', 3000, 5],
+        ['antidote', 160, 5],
+        ['phoenix_down', 500, 5],
+        ['silver_dust', 200, 5],
+        ['tent', 4000, 5],
+    ], [
+        ['Items', 'Cost', "Quantity"],
+        ['potion', 250, 5],
+        ['ether', 3000, 5],
+        ['antidote', 160, 5],
+        ['phoenix_down', 500, 5],
+        ['silver_dust', 200, 5],
+        ['tent', 4000, 5],
+    ], )
+
 create_magic = Cast_Magic()
 create_enemy = EnemyName()
 create_enemy_level = LevelEnemy()
@@ -4794,12 +4823,13 @@ create_weapons_armor = WeaponsArmor()
 
 
 class MakeExcelFiles:
+
     def __init__(self):
         # create pandas dataframe from lists of class
-        self.df_abreheim_shop = pd.DataFrame(create_inventory.abreheim_shop)
-        self.df_abreheim_shop_default = pd.DataFrame(create_inventory.abreheim_shop_defaulf)
-        self.df_abreheim_shop_store_count = pd.DataFrame(create_inventory.store_count)
-        self.df_buy_history = pd.DataFrame(create_inventory.buy_history)
+        self.df_abreheim_shop = pd.DataFrame(abreheim.shop)
+        self.df_abreheim_shop_default = pd.DataFrame(abreheim.shop_default)
+        self.df_abreheim_shop_store_count = pd.DataFrame(abreheim.store_count)
+        self.df_buy_history = pd.DataFrame(abreheim.buy_history)
         self.df_magic = pd.DataFrame(create_magic.magic)
         self.df_magic_gill = pd.DataFrame(create_magic.magic_gil)
         self.df_magic_sell = pd.DataFrame(create_magic.magic_sell)
@@ -4808,9 +4838,12 @@ class MakeExcelFiles:
         self.df_weapons_power = pd.DataFrame(create_weapons_armor.weapon_powers)
         self.df_weapons_buy = pd.DataFrame(create_weapons_armor.shop_buy)
         self.df_weapons_sell = pd.DataFrame(create_weapons_armor.shop_sell)
+        # new version 1.1 added shops:
+        self.df_north_cave_shop = pd.DataFrame(north_cave_shop.shop)
+        self.df_north_cave_shop_default = pd.DataFrame(north_cave_shop.shop_default)
 
     def create_folders(self):
-        folders = ["\\music", "\\save", "\\enemy", "\\inventory_items", "\\magic", "\\weapons_armor", "\\level"]
+        folders = ["\\enemy", "\\inventory_items", "\\magic", "\\weapons_armor", "\\level"]
         # mode = 0o666
         for i in folders:
             path_folder = (CURR_DIR_PATH + i)
@@ -4820,14 +4853,6 @@ class MakeExcelFiles:
             else:
                 # print(CURR_DIR_PATH + i)
                 os.mkdir(CURR_DIR_PATH + i)
-
-    def create_sub_folders_save(self):
-        path_folder = (CURR_DIR_PATH + "\\save" + "\\save_temp")
-        obj = Path(path_folder)
-        if obj.exists():
-            print()
-        else:
-            os.mkdir(path_folder)
 
     def create_main_file(self, folder_name, file_name):
 
@@ -4840,15 +4865,12 @@ class MakeExcelFiles:
             wb = openpyxl.Workbook()
             wb.save(path)
             wb.close()
-            # MakeExcelFiles.PassProtect(self, path, "five@morning!Mind5")
 
     def write_data(self, sheet_name, folder_name, work_book_name, df_name):
         path = (CURR_DIR_PATH + folder_name + work_book_name)
         # MakeExcelFiles.Remove_password_xlsx(self, path, "five@morning!Mind5")
         with pd.ExcelWriter(path, mode="a", engine="openpyxl") as writer:
             df_name.to_excel(writer, sheet_name=sheet_name, index=False, header=False)
-
-        # MakeExcelFiles.PassProtect(self, path, "five@morning!Mind5")
 
     def delete_org_sheet(self, folder_name, file_name):
         path = (CURR_DIR_PATH + folder_name + file_name)
@@ -4861,7 +4883,6 @@ class MakeExcelFiles:
 
         # create folders
         MakeExcelFiles.create_folders(self)
-        MakeExcelFiles.create_sub_folders_save(self)
         # Creates main files
         MakeExcelFiles.create_main_file(self, "\\enemy", "\\enemy_name.xlsx")
         MakeExcelFiles.create_main_file(self, "\\inventory_items", "\\item_store.xlsx")
@@ -4871,25 +4892,35 @@ class MakeExcelFiles:
 
         # create excel files
         MakeExcelFiles.write_data(self, "Abreheim's items", "\\inventory_items", "\\item_store.xlsx",
-                                    self.df_abreheim_shop)
+                                  self.df_abreheim_shop)
         MakeExcelFiles.write_data(self, "Abreheim's items_default", "\\inventory_items", "\\item_store.xlsx",
-                                    self.df_abreheim_shop_default)
+                                  self.df_abreheim_shop_default)
+
         MakeExcelFiles.write_data(self, "store_count", "\\inventory_items", "\\item_store.xlsx",
-                                    self.df_abreheim_shop_store_count)
-        MakeExcelFiles.write_data(self, "buy_history", "\\inventory_items", "\\item_store.xlsx", self.df_buy_history)
+                                  self.df_abreheim_shop_store_count)
+        MakeExcelFiles.write_data(self, "buy_history", "\\inventory_items", "\\item_store.xlsx",
+                                  self.df_buy_history)
         MakeExcelFiles.write_data(self, "magic", "\\magic", "\\cast_magic.xlsx", self.df_magic)
         MakeExcelFiles.write_data(self, "magic_gil", "\\magic", "\\cast_magic.xlsx", self.df_magic_gill)
         MakeExcelFiles.write_data(self, "magic_sell", "\\magic", "\\cast_magic.xlsx", self.df_magic_sell)
         MakeExcelFiles.write_data(self, "Ark1", "\\enemy", "\\enemy_name.xlsx", self.df_enemy_name)
         MakeExcelFiles.write_data(self, "Strength Mod enemy", "\\level", "\\level_up.xlsx", self.df_enemy_level)
-        MakeExcelFiles.write_data(self, "weapon_powers", "\\weapons_armor", "\\weapons_armor.xlsx", self.df_weapons_power)
+        MakeExcelFiles.write_data(self, "weapon_powers", "\\weapons_armor", "\\weapons_armor.xlsx",
+                                  self.df_weapons_power)
         MakeExcelFiles.write_data(self, "shop_buy", "\\weapons_armor", "\\weapons_armor.xlsx", self.df_weapons_buy)
-        MakeExcelFiles.write_data(self, "shop_sell", "\\weapons_armor", "\\weapons_armor.xlsx", self.df_weapons_sell)
+        MakeExcelFiles.write_data(self, "shop_sell", "\\weapons_armor", "\\weapons_armor.xlsx",
+                                  self.df_weapons_sell)
         MakeExcelFiles.delete_org_sheet(self, "\\enemy", "\\enemy_name.xlsx")
         MakeExcelFiles.delete_org_sheet(self, "\\inventory_items", "\\item_store.xlsx")
         MakeExcelFiles.delete_org_sheet(self, "\\magic", "\\cast_magic.xlsx")
         MakeExcelFiles.delete_org_sheet(self, "\\weapons_armor", "\\weapons_armor.xlsx")
         MakeExcelFiles.delete_org_sheet(self, "\\level", "\\level_up.xlsx")
+        # version 1.1
+        MakeExcelFiles.write_data(self, "North Cave items", "\\inventory_items", "\\item_store.xlsx",
+                                  self.df_north_cave_shop)
+        MakeExcelFiles.write_data(self, "North Cave items_default", "\\inventory_items", "\\item_store.xlsx",
+                                  self.df_north_cave_shop_default)
+
     def PassProtect(self, Path, Pass):
 
         xlApp = EnsureDispatch("Excel.Application")
@@ -5965,7 +5996,7 @@ def main_game():
     print("---------------------------------------------------------")
     tprint("lost  shadows")
     print("---------------------------------------------------------")
-    print("Made By codechris, 2022, version 1.0")
+    print(f"Made By codechris, 2022, version {important.version_control()}")
 
     dots = ":     "
     name_dot = "Welcome to Lost Shadows" + dots
