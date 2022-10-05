@@ -9,7 +9,7 @@
 <details>
 <summary>
 <b><u>FIRST TIME INSTALLATION: </u></b> </summary><br /> <i> 
-<b><u>BETA VERSION 1.0 ONLY FOR WINDOWS ver > 7!!</u></b> <br />
+<b><u>BETA VERSION 1.0 ONLY FOR WINDOWS VER > 7!!</u></b> <br />
 &#x2022; Download the file "LostShadows_install.zip" <br />
 &#x2022; Unzip and run the "new_hero_classes" Application <br />
 <br />
