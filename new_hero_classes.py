@@ -4625,6 +4625,7 @@ class InventoryItems:
         self.store_count = [
             ['town', 'start', 'end', 'count'],
             ["Abreheim's items", 0, 0, ""],
+            ["North Cave items", 0, 0, ""],
 
         ]
         self.buy_history = [
