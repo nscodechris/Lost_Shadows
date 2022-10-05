@@ -43,7 +43,8 @@ Copy and replace these files, (to your game folder): <br />
 &#x2022; new_hero_classes.exe <br /> </i> 
 &#x2022; python3.dll <br />
 &#x2022; python310.dll <br />
-&#x2022; downlad patch file and run it <br />
+Last step: <br />
+&#x2022; downlad patch file place it in game folder and run it<br />
 <br/> </details>
 
 
