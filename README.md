@@ -36,15 +36,9 @@ Major bug fixes: <br />
 &#x2022; save & load fixes, crashed before when user input != numbers when loading
 or saving over file, now user will be asked to enter a number instead. <br />
 
-
-Download zip again <br />
-Copy and replace lib folder, to your game folder <br />
-Copy and replace these files, (to your game folder): <br />
-&#x2022; new_hero_classes.exe <br /> </i> 
-&#x2022; python3.dll <br />
-&#x2022; python310.dll <br />
-Last step: <br />
-&#x2022; downlad patch file place it in game folder and run it<br />
+To update: <br />
+&#x2022; make sure the game is of :) <br />
+&#x2022; downlad patch file and run it<br />
 <br/> </details>
 
 
