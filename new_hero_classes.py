@@ -5219,7 +5219,6 @@ class TickTack:
                 if board[x - 1] != " ":
                     board[x - 1] = " "
 
-
     def is_victory(self, icon, board):
         if (board[0] == icon and board[1] == icon and board[2] == icon) or \
             (board[3] == icon and board[4] == icon and board[5] == icon) or \
