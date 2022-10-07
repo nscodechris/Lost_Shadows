@@ -56,8 +56,6 @@ def copy_replace_git_hub_file():
     shutil.rmtree(CURR_DIR_PATH + "\\temp_git")
 
 
-# get_git_hub_file()
-# copy_replace_git_hub_file()
 
 
 class InventoryItemsAdd:
@@ -464,4 +462,6 @@ def write_version():
 
 
 
-# check_files("store_count", "\\inventory_items", "\\item_store.xlsx")
+get_git_hub_file()
+copy_replace_git_hub_file()
+check_files("store_count", "\\inventory_items", "\\item_store.xlsx")
