@@ -38,7 +38,7 @@ or saving over file, now user will be asked to enter a number instead. <br />
 
 To update: <br />
 &#x2022; make sure the game is of :) <br />
-&#x2022; downlad patch file and run it<br />
+&#x2022; downlad patch_ver_1.1.zip unzip any place run upd_ver_1.1.exe<br />
 <br/> </details>
 
 
