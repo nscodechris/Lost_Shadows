@@ -27,7 +27,7 @@ Happy Gaming!!!
 
 <details>
 <summary>
-<b><u>NEW VERSION RELEASE UPCOMING Version 1.1: </u></b> </summary><br />
+<b><u>NEW VERSION RELEASED 2022-10-11  VER 1.1: </u></b> </summary><br />
  <i>
 Major bug fixes: <br />
 &#x2022; when you sell an item, next time enter store, the game crashed, fixed <br />
