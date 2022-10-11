@@ -9,7 +9,7 @@
 <details>
 <summary>
 <b><u>FIRST TIME INSTALLATION: </u></b> </summary><br /> <i> 
-<b><u>BETA VERSION 1.0 ONLY FOR WINDOWS VER > 7!!</u></b> <br />
+<b><u>BETA VERSION 1.1 ONLY FOR WINDOWS VER > 7!!</u></b> <br />
 &#x2022; Download the file "LostShadows_install.zip" <br />
 &#x2022; Unzip and run the "new_hero_classes" Application <br />
 <br />
@@ -38,7 +38,7 @@ or saving over file, now user will be asked to enter a number instead. <br />
 
 To update: <br />
 &#x2022; make sure the game is of :) <br />
-&#x2022; downlad patch_upd_ver_1_1 unzip any place run upd_ver_1.1.exe<br />
+&#x2022; downlad patch_upd_ver_1_1.zip unzip any place run upd_ver_1.1.exe<br />
 <br/> </details>
 
 
