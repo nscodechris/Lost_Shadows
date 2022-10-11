@@ -162,6 +162,8 @@ class YourHero:
         self.store_cost = 0
         self.abreheim_enter = 0
         self.store_money_back = 0
+        self.mountains_north_vertical = 0
+        self.mountains_north_vertical_count = 0
 
         # Key Items_puzzles
         self.key_item_1 = 0
@@ -2802,7 +2804,12 @@ class YourHero:
             story1_basement()
         elif elena.chapter == story.chapter_names[0] and elena.story_name == story.chap_1_names[8]:
             story1_snow_in_south()
-
+        elif elena.chapter == story.chapter_names[0] and elena.story_name == story.chap_1_names[9]:
+            elena.mountains_north_vertical_count = 2
+            print("After the battle you decide to go back to the entrance")
+            input("Press enter")
+            print("---------------------------------------------------------")
+            story1_mountains_in_north()
         else:
             print("Something got wrong", elena.chapter)
             exit()
@@ -4461,7 +4468,7 @@ class Music:
 class StoryName:
     def __init__(self):
         self.chap_1_names = ["Intro", "", "the_crossing", "abreheim_town_in", "ally_in_abrehiem",
-                             "dark_ally_in_abrehiem", "round_room", "basement", "south_snow"]
+                             "dark_ally_in_abrehiem", "round_room", "basement", "south_snow", "mountain_north_cave_entrance"]
 
         self.chapter_names = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"]
         self.progress = ""
@@ -6470,24 +6477,24 @@ def story1_mountains_in_north():
     print("---------------------------------------------------------")
     tprint("Mountains in north")
     print("---------------------------------------------------------")
-    print("The cliffs are sharp and steep, no way to climb without 'iron gloves'")
+    print("" if elena.mountains_north_vertical_count > 0 else "The cliffs are sharp and steep, no way to climb without 'iron gloves'")
     if "Iron Gloves" in cloud.x_see_inventory_name_qty("item", "Key world item 2"):
-        print("You start to climb")
+        print("" if elena.mountains_north_vertical_count > 0 else "You start to climb")
         print("---------------------------------------------------------")
         while True:
-            vertical = 1
+            elena.mountains_north_vertical = 1 + elena.mountains_north_vertical_count
             # second = ""
-            while vertical == 1:
+            while elena.mountains_north_vertical == 1:
                 print("As you hold on to the hard cliffs you see a light coming out from the mountain to the left\n"
                       "To the right you can see the shadows moves in a mysterious way")
                 print("---------------------------------------------------------")
 
                 where_to_climb = input("Where do you want to climb?")
                 if "left" in where_to_climb:
-                    vertical = 2
+                    elena.mountains_north_vertical = 2
                 elif "right" in where_to_climb:
-                    vertical = 10
-            while vertical == 2:
+                    elena.mountains_north_vertical = 10
+            while elena.mountains_north_vertical == 2:
                 print("You choose the left way....")
                 print("Your hands and legs are shaking, and you start to breath heavily")
                 print("In your next move of climbing higher will you grab the small stone on the right\n"
@@ -6505,7 +6512,7 @@ def story1_mountains_in_north():
                     print("Even if the drop made you sweat even more, you manage to get you grip back and continues\n"
                           "to climb the mountains")
                     print("---------------------------------------------------------")
-                    vertical = 3
+                    elena.mountains_north_vertical = 3
                     break
                 elif "branch" in stone_or_branch.lower():
                     print("As you grab onto the branch, you feel that it is loose, and the same time it lowers\n"
@@ -6514,9 +6521,11 @@ def story1_mountains_in_north():
                           "makes you slide down through a hole.")
                     print("---------------------------------------------------------")
                     input("Press Enter")
-                    vertical = 4
+                    elena.mountains_north_vertical = 4
                     break
-            while vertical == 3:
+            while elena.mountains_north_vertical == 3:
+                elena.progress = story.story_name_loop(story.chapter_names[0], story.chap_1_names[9])
+
                 print(
                     "Finaly you reach what looks like an entrance to a cave, there are two lit torches burning\n"
                     "outside of the entrance, they are carved in the rock, one of them seems to recently been placed")
@@ -6527,8 +6536,7 @@ def story1_mountains_in_north():
                     print(
                         "As you start walking inside the cave, the darkness swallows you and they are coming...")
                     YourHero.x_battle(cloud, 0, cloud, elena, "no")
-                    print("....\nafter the battle you decide to go back to the entrance")
-                    print("---------------------------------------------------------")
+
                     # story1_first_crossing()
                 elif cave_choice.lower() == "save":
                     print("Sorry you can't save here, use inventory if you need potions")
@@ -6539,7 +6547,7 @@ def story1_mountains_in_north():
                     print("---------------------------------------------------------")
 
             # you will end up here after vertical 3 falling to this place....
-            while vertical == 4:
+            while elena.mountains_north_vertical == 4:
                 print("Waking up from the fall you see a torch hanging from the ceiling")
                 print("It lights up the 'room' you are in, on the ground there is a skeleton of a unknown origin")
                 print(
@@ -6564,7 +6572,7 @@ def story1_mountains_in_north():
                 elif "key of the tree" in inside_cave_choice.lower() and cloud.key_item_1 == 1:
                     print("You use the key of the trees on the door with a coat of arms with a tree")
                     print("The doors slowly opens")
-                    vertical = 5
+                    elena.mountains_north_vertical = 5
                     break
 
                 elif "open door" in inside_cave_choice.lower:
@@ -6588,10 +6596,11 @@ def story1_mountains_in_north():
                     go_inside_lion_door = input("Do you want to enter?")
                     if go_inside_lion_door.lower() == "yes":
                         print("---------------------------------------------------------")
-                        vertical = 6
+                        elena.mountains_north_vertical = 6
                         break
                     elif go_inside_lion_door.lower() == "no":
                         print("You remain in the room")
+                        input("Press enter")
                         print("---------------------------------------------------------")
 
                 elif inside_cave_choice.lower() == "save":
@@ -6608,20 +6617,20 @@ def story1_mountains_in_north():
                     print("---------------------------------------------------------")
 
 
-            while vertical == 5:
+            while elena.mountains_north_vertical == 5:
                 print("Slowly you walk into the door, and it closses behind you, no way you can return to that room again")
                 cloud.key_item_1 = 0
                 cloud.key_item_1_name = ""
                 print("---------------------------------------------------------")
 
-            while vertical == 6:
+            while elena.mountains_north_vertical == 6:
                 print("You start to walk into the unknown....")
                 cloud.key_item_2 = 0
                 cloud.key_item_2_name = ""
                 # here will be a shop North cave shop, check spelling, you can also by one save and fill health and mp
 
 
-            while vertical == 10:
+            while elena.mountains_north_vertical == 10:
                 print("You choose the right way....")
                 input("Press enter")
                 story1_first_crossing()
