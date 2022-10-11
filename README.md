@@ -36,8 +36,8 @@ or saving over file, now user will be asked to enter a number instead. <br />
 <br />
 To update: <br />
 &#x2022; make sure the game is of <br />
-&#x2022; download patch_upd_ver_1_1.zip unzip any place run upd_ver_1.1.exe <br />
-&#x2022; delete download files <br />
+&#x2022; download patch_upd_ver_1_1.zip unzip in download folder & run upd_ver_1.1.exe <br />
+&#x2022; when done, you can delete patch_upd_ver_1_1.zip & the unzip folder <br />
 <br /> </i>
 </details>
 
