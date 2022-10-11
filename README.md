@@ -36,11 +36,22 @@ or saving over file, now user will be asked to enter a number instead. <br />
 <br />
 To update: <br />
 &#x2022; make sure the game is of <br />
-&#wx2022; download (patch_upd_ver_1_1 zip) unzip any place run upd_ver_1.1.exe <br />
-&#wx2022; delete download files <br />
+&#x2022; download patch_upd_ver_1_1.zip unzip any place run upd_ver_1.1.exe <br />
+&#x2022; delete download files <br />
 <br /> </i>
 </details>
 
+<br />
+
+<details>
+<summary>
+<b><u>NEW VERSION RELEASE COMING VER 1.2: </u></b> </summary><br />
+ <i>
+Major bug fixes: <br />
+&#x2022; North story finished!! <br />
+</i>
+</details>
+<br />
 
 <h2>Other files and info <br /> </h2>
 
