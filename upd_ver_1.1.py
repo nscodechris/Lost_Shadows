@@ -32,13 +32,12 @@ print("installing patch....")
 CURR_DIR_PATH = open_ver_file("lost_shadow_installed.txt")[1]
 
 
-
 def get_git_hub_file():
     import zipfile
     print('Downloading started')
 
     #Defining the zip file URL
-    url = 'https://raw.githubusercontent.com/nscodechris/Lost_Shadows/main/LostShadows_install.zip'
+    url = 'https://media.githubusercontent.com/media/nscodechris/Lost_Shadows/main/LostShadows_install.zip'
     os.mkdir(CURR_DIR_PATH + "\\temp_git")
     # Split URL to get the file name
     filename = url.split('/')[-1]
