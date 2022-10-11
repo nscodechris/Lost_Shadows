@@ -23,8 +23,6 @@ You are going to need it! <br />
 Happy Gaming!!!
 <br/> </i> </details>
 
-
-
 <details>
 <summary>
 <b><u>NEW VERSION RELEASED 2022-10-11  VER 1.1: </u></b> </summary><br />
