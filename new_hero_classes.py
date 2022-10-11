@@ -6521,13 +6521,14 @@ def story1_mountains_in_north():
                           "makes you slide down through a hole.")
                     print("---------------------------------------------------------")
                     input("Press Enter")
+
                     elena.mountains_north_vertical = 4
                     break
             while elena.mountains_north_vertical == 3:
                 elena.progress = story.story_name_loop(story.chapter_names[0], story.chap_1_names[9])
 
                 print(
-                    "Finaly you reach what looks like an entrance to a cave, there are two lit torches burning\n"
+                    "Finally you reach what looks like an entrance to a cave, there are two lit torches burning\n"
                     "outside of the entrance, they are carved in the rock, one of them seems to recently been placed")
                 print("You can see a little bit into the cave, the rest is pitch black")
                 print("---------------------------------------------------------")
