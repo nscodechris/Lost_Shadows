@@ -45,7 +45,6 @@ To update: <br />
 <h2>Other files and info <br /> </h2>
 
 Files like: <br /> 
-&#x2022; game_tick_tack.py <br />
 &#x2022; hang_man_game.py <br />
 They will be included in the game later, side games.
 <br />
