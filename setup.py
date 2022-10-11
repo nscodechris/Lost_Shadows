@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:274190fa4240504e31d5e8283b6d8b79e1139bd987fa111200b1ed92e449369c
-size 215
+import cx_Freeze
+
+executables = [cx_Freeze.Executable("new_hero_classes.py")]
+
+cx_Freeze.setup(
+    name="A bit Racey",
+    options={"build_exe": {"packages":["pygame", "dbm"]}},
+    executables = executables
+
+    )
