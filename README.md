@@ -45,7 +45,7 @@ To update: <br />
 <summary>
 <b><u>NEW VERSION RELEASE COMING VER 1.2: </u></b> </summary><br />
  <i>
-Major bug fixes: <br />
+INFO more coming...: <br />
 &#x2022; North story finished!! <br />
 </i>
 </details>
