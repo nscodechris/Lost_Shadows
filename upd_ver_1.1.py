@@ -5,6 +5,8 @@ import openpyxl
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl import load_workbook
 import shutil
+from io import BytesIO
+import requests
 
 CURR_VERSION = "ver 1.1"
 
@@ -26,14 +28,13 @@ def open_ver_file(file_name):
         ver = "ver 1.0"
     return ver, path_root, file_path
 
+print("installing patch....")
 CURR_DIR_PATH = open_ver_file("lost_shadow_installed.txt")[1]
 
 
 
 def get_git_hub_file():
     import zipfile
-    from io import BytesIO
-    import requests
     print('Downloading started')
 
     #Defining the zip file URL
@@ -51,7 +52,6 @@ def get_git_hub_file():
     zipfile.extractall(CURR_DIR_PATH + "\\temp_git")
 
 def copy_replace_git_hub_file():
-    import shutil
     shutil.copytree(CURR_DIR_PATH + "\\temp_git", CURR_DIR_PATH, dirs_exist_ok=True)
     shutil.rmtree(CURR_DIR_PATH + "\\temp_git")
 
@@ -459,7 +459,6 @@ def write_version():
         with open(CURR_DIR_PATH + "\\lost_shadow_installed.txt", "a") as f:
             f.write("\n" + CURR_VERSION)
             f.close()
-
 
 
 get_git_hub_file()
